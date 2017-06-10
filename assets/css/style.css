@@ -3,6 +3,12 @@ body {
 	background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center; 
+        font-family: 'Roboto Slab', serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
 }
 /* farmers market central header */
 h1 {
@@ -13,6 +19,7 @@ h1 {
 	margin: auto;
 	font-size: 100px;
 	border-bottom: 2px solid white;
+	text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
 }
 
 /* headers for each input and search field & the table*/
@@ -88,4 +95,12 @@ td {
 img {
 	width: 350px;
 	height: 350px;
+}
+
+#map {
+    height: 300px;
+    width:350px;
+    margin-right: 40px;
+    position: relative;
+    top: -350px;
 }
