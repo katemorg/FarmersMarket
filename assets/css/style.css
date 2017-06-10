@@ -45,14 +45,15 @@ td {
 
 /* header for search */
 #search-add{
-	max-width: 335px;
+	width: 335px;
 }
 
 /* search container */
 #searchable {
 	position: relative;
-	right: -1050px;
+	right: -1000px;
 	top:-112px;
+	width: 500px;
 }
 
 .col-md-12, .row, .container, header {
@@ -80,7 +81,7 @@ td {
 #pics {
 	position: relative;
 	top: 300px;
-	float: right;
+	right: -1000px;
 }
 
 /* images */
