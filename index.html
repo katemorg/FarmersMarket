@@ -12,11 +12,18 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <!--momentJS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-     <script type="text/javascript" src="assets/javascript/js.app"></script>
+    <!--GoogleMapsAPI-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHPG0LCm4jhM4uYbaPNmKCzc1fJhIxLS4&callback=initMap"
+    async defer></script>
+    <!--FireBaseAPI-->
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+<script>
+	<script type="text/javascript" src="assets/javascript/app.js"></script>
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
+
 	<header>
 		<div class="container">
 			<div class="row">
@@ -56,10 +63,14 @@
 				</div>
 			</div>
 		</div>
+
 		
 		<div class="container" id="aside">
 			<div class="row">
+
 				<div class="col-sm-4" id="pics">
+				    <div id="map"></div>
+				    <br><br>
 					<img src="https://www.promotionandarts.org/sites/default/files/styles/slider/public/IMG_8386.JPG?itok=mMUYKRTy"/>
 					<br><br>
 					<img src="http://www.kennesaw.com/wp-content/uploads/kennesaw-farmers-market-pickled.jpg"/>
@@ -67,9 +78,12 @@
 					<img src="http://www.dvo.com/newsletter/monthly/2015/june/images/farmersmarket2.jpeg">
 					<br><br>
 					<img src="http://www.cuesa.org/sites/default/files/styles/scale_610px/public/CUESA_Ferry_Plaza_Farmers_MarketSouth_Amanda_Lynn_Photography.jpg?itok=3_tY9FBq">
+
 				</div>
 			</div>
 		</div>
+
+		
 
 		<div class="container" id="conmain">
 			<div class="row" id="rowmain">
@@ -92,6 +106,7 @@
 			  			<input type="text" class="form-control" placeholder="330-111-1111" aria-describedby="sizing-addon2">
 					</div>
 					<input class="btn btn-default" type="submit" value="Submit" id="button">
+
 				</div>
 			</div>
 		</div>

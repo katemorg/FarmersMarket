@@ -54,3 +54,11 @@ img {
 	width: 350px;
 	height: 350px;
 }
+
+
+#map {
+        height: 300px;
+        width:350px;
+        margin-right: 40px;
+      }
+
