@@ -4,7 +4,7 @@ body {
     background-attachment: fixed;
     background-position: center; 
 }
-
+/* farmers market central header */
 h1 {
 	text-align: center;
 	font-weight: bold;
@@ -15,14 +15,44 @@ h1 {
 	border-bottom: 2px solid white;
 }
 
+/* headers for each input and search field & the table*/
 h2, th, td, #consearch {
 	font-weight: bold;
 	max-width: 1400px;
 	color: white;
 }
 
-th {
+/* headers for each input and search field */
+th, h2 {
+	background-color: gray;
+	opacity: 0.9;
 	font-size: 25px;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+/* table background */
+td {
+	background-color: gray;
+	opacity: 0.9;
+}
+
+/* header for adding your market */
+#market-add {
+	padding: 5px;
+	max-width: 600px;
+}
+
+/* header for search */
+#search-add{
+	max-width: 335px;
+}
+
+/* search container */
+#searchable {
+	position: relative;
+	right: -1050px;
+	top:-112px;
 }
 
 .col-md-12, .row, .container, header {
@@ -31,6 +61,7 @@ th {
 	width: 100%;
 }
 
+/* adding your own market */
 #conmain {
 	position: fixed;
 	top: 500px;
@@ -41,15 +72,18 @@ th {
 	opacity: 0.9;
 }
 
-#button {
+#button-submit, #button-search {
 	opacity: 0.9;
 }
 
+/* size of pics */
 #pics {
 	position: relative;
+	top: 300px;
 	float: right;
 }
 
+/* images */
 img {
 	width: 350px;
 	height: 350px;
