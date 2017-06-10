@@ -1,0 +1,56 @@
+body {
+	background-image: url("https://static.wixstatic.com/media/8bbc01_5fbf6c901c9842749703f05055e753f2.jpg_srz_1600_1200_85_22_0.50_1.20_0.00_jpg_srz");
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+}
+
+h1 {
+	text-align: center;
+	font-weight: bold;
+	color: white;
+	width: 100%;
+	margin: auto;
+	font-size: 100px;
+	border-bottom: 2px solid white;
+}
+
+h2, th, td, #consearch {
+	font-weight: bold;
+	max-width: 1400px;
+	color: white;
+}
+
+th {
+	font-size: 25px;
+}
+
+.col-md-12, .row, .container, header {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+#conmain {
+	position: fixed;
+	top: 500px;
+}
+
+.input-group {
+	width: 600px;
+	opacity: 0.9;
+}
+
+#button {
+	opacity: 0.9;
+}
+
+#pics {
+	position: relative;
+	float: right;
+}
+
+img {
+	width: 350px;
+	height: 350px;
+}
