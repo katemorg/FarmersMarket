@@ -31,10 +31,32 @@ function marketResultHandler(detailresults) {
     markets.push(newMarket);
   }
   console.log(markets);
+
+  $.each(markets, function(index, value) {
+    // console.log(markets[index].id);
+    getDetails(markets[index]);
+    // getDetails(parseInt(markets[index].id))
+  });
 }
 
-function getDetails(id) {
-  console.log(id);
+function getDetails(market) {
+  var id = market.id;
+  var name = market.name;
+
+  window['detailResultHandler' + id] = function(data) {
+    var currentMarket = data.marketdetails;
+    var newRow = ' \
+    <tr> \
+      <td>' + name + '</td> \
+      <td>' + '<a href="' + currentMarket["GoogleLink"] + '">' + currentMarket["Address"] + '</a></td> \
+      <td>' + currentMarket["Products"] + '</td> \
+      <td></td> \
+      <td>' + currentMarket["Schedule"] + '</td> \
+    </tr>';
+    console.log(newRow);
+    $(".table tbody").append(newRow);
+  }
+
   $.ajax({
     type: "GET",
     contentType: "application/json; charset=utf-8",
@@ -42,16 +64,13 @@ function getDetails(id) {
     url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=" + id,
     // url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + zip,
     dataType: 'jsonp',
-    jsonpCallback: 'detailResultHandler'
+    jsonpCallback: 'detailResultHandler' + id
   });
+  console.log(id);
 }
 
 function detailResultHandler(detailresults) {
   var currentMarket = detailresults.marketdetails;
-  console.log(detailresults);
-  // for (var key in currentMarket) {
-  //   console.log(key + " " + currentMarket[key]);
-  // }
   var newRow = ' \
     <tr> \
       <td>' + 'NAME GOES HERE' + '</td> \
@@ -65,10 +84,7 @@ function detailResultHandler(detailresults) {
 }
 
 $(function() {
-  getMarkets(44022);
-  console.log(markets);
-  $.each(markets, function(index, value) {
-    console.log(markets[index].id);
-    getDetails(parseInt(markets[index].id));
-  });
+  getMarkets(44121);
+  // console.log(markets);
+
 });
