@@ -3,7 +3,7 @@ body {
 	background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center; 
-        font-family: 'Roboto Slab', serif;
+    font-family: 'Roboto Slab', serif;
 }
 
 * {
@@ -52,7 +52,7 @@ td {
 
 /* header for search */
 #search-add{
-	width: 335px;
+	width: 380px;
 }
 
 /* search container */
@@ -61,6 +61,10 @@ td {
 	right: -1000px;
 	top:-112px;
 	width: 500px;
+}
+
+#exampleInputEmail3 {
+	width: 380px;
 }
 
 .col-md-12, .row, .container, header {
@@ -86,9 +90,22 @@ td {
 
 /* size of pics */
 #pics {
-	position: relative;
+	position: absolute;
+	top: 0px;
+	right: -338px;
+	overflow: scroll;
+}
+
+#mapable{
+	position: absolute;
 	top: 300px;
-	right: -1000px;
+	right: -1030px;
+}
+
+#aside{
+	position: absolute;
+	clear: all;
+	top:300px;
 }
 
 /* images */
@@ -104,3 +121,4 @@ img {
     position: relative;
     top: -350px;
 }
+

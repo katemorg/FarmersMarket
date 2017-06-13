@@ -35,7 +35,7 @@
 	</header>
 	
 	<main>
-		<div id="consearch">
+		<div class="container" id="consearch">
 			<div class="row">
 				<div class="col-sm-8">
 					<table class="table table-hover">
@@ -62,28 +62,10 @@
 					</table>
 				</div>
 			</div>
-		</div>
+		
 
 		<!-- search for markets -->
-		<div class="container" id="searchable">
-			<div class="row">
-				<div class="col-sm-4">
-					<h2 id="search-add">Find nearby farmers markets!</h2>
-					<form class="form-inline">
-					  <div class="form-group">
-					    <label class="sr-only" for="exampleInputEmail3"></label>
-					    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Nearby markets by zip code">
-					  </div>
-					  <!-- search button -->
-					  <button type="submit" class="btn btn-default" id="button-search">Search</button>
-					</form>
-				</div>
-			</div>
-		</div>
-		<!-- images -->
-		<div class="container" id="aside">
-			<div class="row">
-				<div class="col-sm-4">
+				<div class="col-sm-4" id="searchable">
 					<h2 id="search-add">Find nearby farmers markets!</h2>
 					<form class="form-inline">
 					  <div class="form-group">
@@ -100,9 +82,10 @@
 		<!-- images -->
 		<div id="aside">
 			<div class="row">
-				<div class="col-sm-4 hidden-sm hidden-xs" id="pics">
+				<div class="col-sm-4 hidden-sm hidden-xs" id="mapable">
 					<div id="map">
 					</div>
+					<span id="pics">
 					<img src="https://www.promotionandarts.org/sites/default/files/styles/slider/public/IMG_8386.JPG?itok=mMUYKRTy"/>
 					<br><br>
 					<img src="http://www.kennesaw.com/wp-content/uploads/kennesaw-farmers-market-pickled.jpg"/>
