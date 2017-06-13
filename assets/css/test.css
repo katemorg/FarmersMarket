@@ -6,6 +6,7 @@
 body { 
 	font-family: 'Roboto Slab', serif;
 	background-image: url("https://static.wixstatic.com/media/8bbc01_5fbf6c901c9842749703f05055e753f2.jpg_srz_1600_1200_85_22_0.50_1.20_0.00_jpg_srz");
+	background-size: cover;
 }
 
 /*"Farmers Market Central" text*/
@@ -26,7 +27,7 @@ h2 {
 	padding: 1em;
 	text-align: center;
 	color: #FFF;
-	background-color: rgba(0, 0, 0, 0.4);
+	background-color: rgba(0, 0, 0, 0.2);
 }
 
 /* Table headings */

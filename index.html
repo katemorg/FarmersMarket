@@ -1,120 +1,159 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 	<title>Farmers Market Central</title>
+	
+	<!-- reset css link -->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-	<!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <!--momentJS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-    <!-- javascript link -->
-    <script type="text/javascript" src="assets/javascript/app.js"></script>
-    <!-- reset css link -->
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <!-- style sheet link -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!--Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
+
+	<!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    
+    <!--momentJS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    
+    <!--GoogleMapsAPI-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHPG0LCm4jhM4uYbaPNmKCzc1fJhIxLS4&callback=initMap"
+    async defer></script>
+
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
+    
+    <!-- javascript link -->
+    <script type="text/javascript" src="assets/javascript/main.js"></script>
 </head>
-<body>
-	<header>
-		<div class="container">
+
+<body>	
+
+	<!--Main container, fluid to fill entire window-->
+	<div class="container-fluid">
+		
+		<header>
 			<div class="row">
 				<div class="col-md-12">
-					<h1>Farmers Market Central</h1>
+  					<h1 class="title">Farmers Market Central</h1>
 				</div>
 			</div>
-		</div>
-	</header>
-	
-	<main>
-		<div class="container" id="consearch">
-			<div class="row">
-				<div class="col-sm-8">
-					<table class="table table">
+		</header>
+
+		<!--Row comprised of everything but the images along bottom-->
+		<div class="row">
+
+			<!--Column for left-side elements: search and map-->
+			<div class="col-md-5">
+				<!--Fluid container to fill entire width-->
+				<div class="container-fluid">
+					<!--Row for search box-->
+					<div class="row" id="searchable">
 						<div class="panel-body">
-					          <thead>
-					            <tr>
-					              <th>Farmers Markets</th>
-					              <th>Location</th>
-					              <th>Products</th>
-					              <th>Contact</th>
-					              <th>Event dates & hours</th>
-					            </tr>
-					          </thead>
-					          <tbody>
-					            <tr>
-					              <td>VEGFRESH Market</td>
-					              <td>Medina, Ohio</td>
-					              <td>Fruit, veggies, honey</td>
-					              <td>330-333-1234</td>
-					              <td>7/4/2017 from 8am-5pm</td>
-					            </tr>
-					          </tbody>
-					    </div>
-					</table>
-				</div>
-			</div>
-		</div>
-		<!-- search for markets -->
-		<div class="container" id="searchable">
-			<div class="row">
-				<div class="col-sm-4">
-					<h2 id="search-add">Find nearby farmers markets!</h2>
-					<form class="form-inline">
-					  <div class="form-group">
-					    <label class="sr-only" for="exampleInputEmail3"></label>
-					    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Nearby markets by zip code">
-					  </div>
-					  <!-- search button -->
-					  <button type="submit" class="btn btn-default" id="button-search">Search</button>
-					</form>
-				</div>
-			</div>
-		</div>
-		<!-- images -->
-		<div class="container" id="aside">
-			<div class="row">
-				<div class="col-sm-4" id="pics">
-					<img src="https://www.promotionandarts.org/sites/default/files/styles/slider/public/IMG_8386.JPG?itok=mMUYKRTy"/>
-					<br><br>
-					<img src="http://www.kennesaw.com/wp-content/uploads/kennesaw-farmers-market-pickled.jpg"/>
-					<br><br>
-					<img src="http://www.dvo.com/newsletter/monthly/2015/june/images/farmersmarket2.jpeg">
-					<br><br>
-					<img src="http://www.cuesa.org/sites/default/files/styles/scale_610px/public/CUESA_Ferry_Plaza_Farmers_MarketSouth_Amanda_Lynn_Photography.jpg?itok=3_tY9FBq">
-				</div>
-			</div>
-		</div>
-		<!-- adding your own market -->
-		<div class="container" id="conmain">
-			<div class="row" id="rowmain">
-				<div class="col-sm-12" id="colmain">
-					<h2 id="market-add">Add your market!</h2>
-					<div class="input-group">
-			  			<span class="input-group-addon" id="sizing-addon2">Name of your farmers market</span>
-			  			<input type="text" class="form-control" placeholder="Market Name" aria-describedby="sizing-addon2">
+							<h2 id="search-add">Find Nearby Markets</h2>
+							<form class="form-inline" class="search-input">
+								<div class="form-group">
+									<input type="number" class="form-control search-input" id="zip-code" placeholder="Enter Zip Code">
+									<!-- search button -->
+									<button type="submit" class="btn btn-default" id="button-search">Search</button>
+								</div>
+							</form>
+						</div>
 					</div>
-					<div class="input-group">
-			  			<span class="input-group-addon" id="sizing-addon2">Location (full address)</span>
-			  			<input type="text" class="form-control" placeholder="123 farmers way..." aria-describedby="sizing-addon2">
+					<!--Row for Map-->
+					<div class="row" id="map">
 					</div>
-					<div class="input-group">
-			  			<span class="input-group-addon" id="sizing-addon2">Types of products (seperate by a comma)</span>
-			  			<input type="text" class="form-control" placeholder="Honey, Organic, Heirloom..." aria-describedby="sizing-addon2">
-					</div>
-					<div class="input-group">
-			  			<span class="input-group-addon" id="sizing-addon2">Contact (phone #, email, social media site)</span>
-			  			<input type="text" class="form-control" placeholder="330-111-1111" aria-describedby="sizing-addon2">
-					</div>
-					<!-- submit button -->
-					<input class="btn btn-default" type="submit" value="Submit" id="button-submit">
 				</div>
+			</div> <!--End of left-side column-->
+
+			<!--Column for right-side elements: list of markets and form to submit market-->
+			<div class="col-md-7">
+				<!--Row for list of markets-->
+				<div class="row" id="consearch">
+					<!--Panel to hold table (keeps styling consistent)-->
+					<div class="panel-body">
+						<h2>Markets in Your Area</h2>
+						<table class="table table-hover">
+							<thead>
+								<tr>
+								  <th>Market</th>
+								  <th>Location</th>
+								  <th>Products</th>
+								  <th>Contact</th>
+								  <th>Dates & Times</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+								  <td>VEGFRESH Market</td>
+								  <td>Medina, Ohio</td>
+								  <td>Fruit, veggies, honey</td>
+								  <td>330-333-1234</td>
+								  <td>7/4/2017 from 8am-5pm</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<!--Row for form to add market-->
+				<div class="row">
+					<div class="panel-body">
+						<h2 id="market-add">Add Your Market</h2>
+
+						<div class="input-group">
+				  			<span class="input-group-addon" id="sizing-addon2">Name</span>
+				  			<input type="text" class="form-control" placeholder="Market Name" aria-describedby="sizing-addon2">
+						</div>
+
+						<div class="input-group">
+				  			<span class="input-group-addon" id="sizing-addon2">Location</span>
+				  			<input type="text" class="form-control" placeholder="123 farmers way, city, state" aria-describedby="sizing-addon2">
+						</div>
+
+						<div class="input-group">
+				  			<span class="input-group-addon" id="sizing-addon2">Products (seperate by a comma)</span>
+				  			<input type="text" class="form-control" placeholder="Honey, Organic, Heirloom..." aria-describedby="sizing-addon2">
+						</div>
+
+						<div class="input-group">
+				  			<span class="input-group-addon" id="sizing-addon2">Contact (phone #, email, social media site)</span>
+				  			<input type="text" class="form-control" placeholder="555-555-5555" aria-describedby="sizing-addon2">
+						</div>
+
+						<!-- submit button -->
+						<input class="btn btn-default" type="submit" value="Submit" id="button-submit">
+					</div>
+				</div>
+			</div> <!--End of right-side column-->
+		</div> <!--End of main row-->
+
+		<!--New container for images along bottom-->
+		<div class="container">
+			<div class="row hidden-sm hidden-xs" id="aside" id="pics">
+				<img class="market-pics" src="https://www.promotionandarts.org/sites/default/files/styles/slider/public/IMG_8386.JPG?itok=mMUYKRTy"/>
+				<img class="market-pics" src="http://www.kennesaw.com/wp-content/uploads/kennesaw-farmers-market-pickled.jpg"/>
+				<img class="market-pics" src="http://www.dvo.com/newsletter/monthly/2015/june/images/farmersmarket2.jpeg">
+				<img class="market-pics" src="http://www.newcastlepa.org/Events/Farmers-_Market/Farmers_Market-002.gif">
+				<img class="market-pics" src="http://www.northportfarmersmarket.com/wp-content/uploads/farmers-market-2.jpg">
+				<img class="market-pics" src="http://images2.laweekly.com/imager/u/745xauto/5619539/15427908304_7dffefd1ca_k.jpg">
+				<img class="market-pics" src="http://www.sandiegocounty.gov/content/dam/sdc/deh/fhd/food/fhd_food_farmersmarket02.jpg">
 			</div>
-		</div>
-	</main>
+		</div> <!--End of container for images-->
+
+		<footer>
+		</footer>
+
+  </div> <!--End of main container-->
+   
+
 </body>
+
 </html>
