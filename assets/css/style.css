@@ -6,6 +6,8 @@
 body { 
 	font-family: 'Roboto Slab', serif;
 	background-image: url("https://static.wixstatic.com/media/8bbc01_5fbf6c901c9842749703f05055e753f2.jpg_srz_1600_1200_85_22_0.50_1.20_0.00_jpg_srz");
+	background-attachment: fixed;
+	background-position: center;
 }
 
 /*"Farmers Market Central" text*/
@@ -42,28 +44,29 @@ table {
 	color: black;
 }
 
-/* Sizing and spacing of pictures along bottom*/
-.market-pics {
-	width: 250px;
-	height: 200px;
-	margin: 2px;
-}
-
 /* Spacing of search box */
 .search-input {
-	margin-left: 20px;
 	align-content: center;
-	margin-bottom: 20px;
+	margin-bottom: 15px;
 }
 
 /* Spacing of input groups for adding market */
 .input-group {
-	margin-bottom: 10px;
+	margin-bottom: 5px;
+}
+
+.input-group-addon {
+	border-radius: 0;
+	border: none;
+	background-color: #fff;
+	opacity: 0.9;
 }
 
 /* Spacing of button */
 .btn {
-	margin-bottom: 20px;
+	margin-bottom: 15px;
+	border: none;
+	border-radius: 0;
 }
 
 /* width of container for images along bottom */
@@ -74,6 +77,14 @@ table {
 /* Spacing of search form */
 .form-group {
 	margin-top: 10px;
+}
+
+.form-control {
+	background-color: white;
+	opacity: 0.8;
+	color: black;
+	border: none;
+	border-radius: 0;
 }
 
 
