@@ -1,13 +1,13 @@
-// Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCMqAsnjjRovdQtvPkQrpMV1T8hMcPfrZo",
-    authDomain: "farmers-market-1497106306900.firebaseapp.com",
-    databaseURL: "https://farmers-market-1497106306900.firebaseio.com",
-    projectId: "farmers-market-1497106306900",
-    storageBucket: "farmers-market-1497106306900.appspot.com",
-    messagingSenderId: "453822887828"
-  };
-  firebase.initializeApp(config);
+// // Initialize Firebase
+//   var config = {
+//     apiKey: "AIzaSyCMqAsnjjRovdQtvPkQrpMV1T8hMcPfrZo",
+//     authDomain: "farmers-market-1497106306900.firebaseapp.com",
+//     databaseURL: "https://farmers-market-1497106306900.firebaseio.com",
+//     projectId: "farmers-market-1497106306900",
+//     storageBucket: "farmers-market-1497106306900.appspot.com",
+//     messagingSenderId: "453822887828"
+//   };
+//   firebase.initializeApp(config);
 
 
  var map, infoWindow;
