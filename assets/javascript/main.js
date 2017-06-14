@@ -1,3 +1,16 @@
+// // Initialize Firebase
+// var config = {
+//   apiKey: "AIzaSyCMqAsnjjRovdQtvPkQrpMV1T8hMcPfrZo",
+//   authDomain: "farmers-market-1497106306900.firebaseapp.com",
+//   databaseURL: "https://farmers-market-1497106306900.firebaseio.com",
+//   projectId: "farmers-market-1497106306900",
+//   storageBucket: "farmers-market-1497106306900.appspot.com",
+//   messagingSenderId: "453822887828"
+// };
+// firebase.initializeApp(config);
+var database = firebase.database();
+var markets = [];
+
 function farmersMarket() {
   this.id = null;
   this.name = null;
@@ -7,7 +20,15 @@ function farmersMarket() {
   this.schedule = null;
 }
 
-var markets = [];
+// Search function
+$(function() {
+  $("#button-search").on("click", function() {
+    var zipcode = $("#zip-code").val().trim();
+    getMarkets(zipcode);
+  });
+
+});
+
 
 function getMarkets(zip) {
   $.ajax({
@@ -30,16 +51,13 @@ function marketResultHandler(detailresults) {
     newMarket.name = marketList[key].marketname;
     markets.push(newMarket);
   }
-  console.log(markets);
 
   $.each(markets, function(index, value) {
-    // console.log(markets[index].id);
-    getDetails(markets[index]);
-    // getDetails(parseInt(markets[index].id))
+    getDetails(markets[index], index);
   });
 }
 
-function getDetails(market) {
+function getDetails(market, index) {
   var id = market.id;
   var name = market.name;
 
@@ -53,7 +71,6 @@ function getDetails(market) {
       <td></td> \
       <td>' + currentMarket["Schedule"] + '</td> \
     </tr>';
-    console.log(newRow);
     $(".table tbody").append(newRow);
   }
 
@@ -66,10 +83,9 @@ function getDetails(market) {
     dataType: 'jsonp',
     jsonpCallback: 'detailResultHandler' + id
   });
-  console.log(id);
 }
 
-function detailResultHandler(detailresults) {
+function displayMarkets(detailresults) {
   var currentMarket = detailresults.marketdetails;
   var newRow = ' \
     <tr> \
@@ -83,8 +99,38 @@ function detailResultHandler(detailresults) {
   $(".table tbody").append(newRow);
 }
 
-$(function() {
-  getMarkets(44121);
-  // console.log(markets);
+// Populate the table with the list farmers markets
+database.ref().on("value", function(snapshot) {
+    var data = snapshot.val();
+    $(".table tbody").empty();
+    if (data) {
+      for (var key in data) {
+        var thisObject = data[key];
+        console.log(data[key]);
+
+        // Add new row here
+      }
+    } else {
+      $(".table tbody").append("No farmers markets add one.")
+    }
+  },
+  function(errorObject) {
+    console.log("The read failed: " + errorObject.code)
+    $(".table tbody").append("Error getting farmers markets schedule!");
+  }
+);
+
+$("#button-submit").on("click", function() {
 
 });
+
+function addMarket() {
+  database.ref().push({
+    id: market.id,
+    name: market.name,
+    address: market.address,
+    googleLink: market.googleLink,
+    products: market.products,
+    schedule: market.schedule,
+  });
+}
