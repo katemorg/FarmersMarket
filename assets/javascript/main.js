@@ -26,7 +26,6 @@ $(function() {
     var zipcode = $("#zip-code").val().trim();
     getMarkets(zipcode);
   });
-
 });
 
 
@@ -34,8 +33,6 @@ function getMarkets(zip) {
   $.ajax({
     type: "GET",
     contentType: "application/json; charset=utf-8",
-    // submit a get request to the restful service mktDetail.
-    // url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=" + id,
     url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + zip,
     dataType: 'jsonp',
     jsonpCallback: 'marketResultHandler'
@@ -77,9 +74,7 @@ function getDetails(market, index) {
   $.ajax({
     type: "GET",
     contentType: "application/json; charset=utf-8",
-    // submit a get request to the restful service mktDetail.
     url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=" + id,
-    // url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + zip,
     dataType: 'jsonp',
     jsonpCallback: 'detailResultHandler' + id
   });
@@ -120,8 +115,23 @@ database.ref().on("value", function(snapshot) {
   }
 );
 
-$("#button-submit").on("click", function() {
-
+// Function to validate user input on form before submitting
+$("#form--market-add").validate({
+  rules: {
+    marketNameAdd: "required",
+    marketLocationAdd: "required",
+    marketProductsAdd: {
+      required: true,
+    },
+    marketContactAdd: {
+      required: true,
+    }
+  },
+  submitHandler: function(form, event) {
+    event.preventDefault();
+    // AddTrain();
+    alert(yay);
+  }
 });
 
 function addMarket() {
@@ -134,3 +144,20 @@ function addMarket() {
     schedule: market.schedule,
   });
 }
+
+
+// Populate modal fields
+$(".btn-addMarket").on("click", function() {
+  event.preventDefault();
+  // var trainID = $(this).closest("tr").attr("data-id");
+  // var trainRef = database.ref().child(trainID);
+  // trainRef.on('value', function(snapshot) {
+  //   var trainEdit = snapshot.val();
+  //   if (trainEdit) {
+  //     $("#trainNameEdit").val(trainEdit.trainName).attr("data-id", trainID);
+  //     $("#trainDestinationEdit").val(trainEdit.trainDestination);
+  //     $("#trainTimeEdit").val(trainEdit.trainTime);
+  //     $("#trainFrequencyEdit").val(trainEdit.trainFrequency);
+  //   }
+  // });
+});
