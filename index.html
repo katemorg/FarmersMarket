@@ -37,18 +37,20 @@
                   <input type="number" class="form-control search-input" id="zip-code" placeholder="Enter Zip Code">
                   <!-- search button -->
                   <button type="button" class="btn btn-default" id="button-search">Search</button>
+                 
                 </div>
               </form>
             </div>
           </div>
+           <button class='btn btn-default btn-sm btn-addMarket' role='button' data-toggle='modal' data-target='#modal--market-add'>Add Market</button>
           <!--Row for Map-->
           <div class="row" id="map">
           </div>
           <!--Row for form to add market-->
-          <div class="row">
+          <!-- <div class="row">
             <div class="panel-body">
               <h2 id="market-add">Add Your Market</h2>
-              <form id="form--market-add">
+              <form id="formmarket-add">
                 <div class="input-group">
                   <label class="input-group-addon" for="marketNameAdd">Name</label>
                   <input type="text" id="marketNameAdd" name="marketNameAdd" id="market" class="form-control" placeholder="Market Name">
@@ -65,11 +67,11 @@
                   <label class="input-group-addon" for="marketContactAdd">Contact (phone #, email, social media site)</label>
                   <input type="text" id="marketContactAdd" name="marketContactAdd" class="form-control" placeholder="555-555-5555">
                 </div>
-                <!-- submit button -->
+                
                 <button class="btn btn-default" type="submit" id="button-submit">Submit</button>
               </form>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
       <!--End of left-side column-->
@@ -105,9 +107,55 @@
       </div>
       <!--End of right-side column-->
     </div>
-    <!--End of main row-->
-    <footer>
-    </footer>
+    <!-- Modal -->
+    <div class="modal fade" id="modal--market-add" tabindex="-1" role="dialog" aria-labelledby="modal--market-add">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <!-- <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="modal--train-label">Train Edit</h4>
+          </div> -->
+          <div class="modal-body">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Add Market</h3>
+              </div>
+              <div class="panel-body">
+                <form id="form--market-add">
+                  <div class="input-group">
+                    <label class="input-group-addon" for="marketNameAdd">Name</label>
+                    <input type="text" id="marketNameAdd" name="marketNameAdd" id="market" class="form-control" placeholder="Market Name">
+                  </div>
+                  <div class="input-group">
+                    <label class="input-group-addon" for="marketLocationAdd">Location</label>
+                    <input type="text" id="marketLocationAdd" name="marketLocationAdd" class="form-control" placeholder="123 farmers way, city, state">
+                  </div>
+                  <div class="input-group">
+                    <label class="input-group-addon" for="marketProductsAdd">Products (seperate by a comma)</label>
+                    <input type="text" id="marketProductsAdd" name="marketProductsAdd" class="form-control" placeholder="Honey, Organic, Heirloom...">
+                  </div>
+                  <div class="input-group">
+                    <label class="input-group-addon" for="marketContactAdd">Contact (phone #, email, social media site)</label>
+                    <input type="text" id="marketContactAdd" name="marketContactAdd" class="form-control" placeholder="555-555-5555">
+                  </div>
+                  <!-- submit button -->
+                  <button class="btn btn-default" type="submit" id="button-submit2">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" id="btnSaveChanges" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Modal -->
+  </div>
+  <!--End of main row-->
+  <footer>
+  </footer>
   </div>
   <!--End of main container-->
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

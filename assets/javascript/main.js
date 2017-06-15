@@ -144,3 +144,20 @@ function addMarket() {
     schedule: market.schedule,
   });
 }
+
+
+// Populate modal fields
+$(".btn-addMarket").on("click", function() {
+  event.preventDefault();
+  // var trainID = $(this).closest("tr").attr("data-id");
+  // var trainRef = database.ref().child(trainID);
+  // trainRef.on('value', function(snapshot) {
+  //   var trainEdit = snapshot.val();
+  //   if (trainEdit) {
+  //     $("#trainNameEdit").val(trainEdit.trainName).attr("data-id", trainID);
+  //     $("#trainDestinationEdit").val(trainEdit.trainDestination);
+  //     $("#trainTimeEdit").val(trainEdit.trainTime);
+  //     $("#trainFrequencyEdit").val(trainEdit.trainFrequency);
+  //   }
+  // });
+});
