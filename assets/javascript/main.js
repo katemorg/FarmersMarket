@@ -150,8 +150,9 @@ function addMarket() {
 
 
 // Populate modal fields
-$(".btn-addMarket").on("click", function() {
+$("#btnAddMarket").on("click", function() {
   event.preventDefault();
+  $("#form--market-add").valid();
   // var trainID = $(this).closest("tr").attr("data-id");
   // var trainRef = database.ref().child(trainID);
   // trainRef.on('value', function(snapshot) {
