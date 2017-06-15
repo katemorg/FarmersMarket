@@ -95,3 +95,18 @@ table {
     margin-left: 5px;
     margin-bottom: 20px;
 }
+
+@media screen and (max-width: 768px) {
+    h1{
+        font-size:20px;
+    }
+    h2 {
+    	font-size: 16px;
+    }
+    th {
+    	font-size: 14px;
+    }
+    body {
+    	margin: 0;
+    }
+}
