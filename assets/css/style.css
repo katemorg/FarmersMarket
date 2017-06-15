@@ -1,0 +1,97 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+body { 
+	font-family: 'Roboto Slab', serif;
+	background-image: url("https://static.wixstatic.com/media/8bbc01_5fbf6c901c9842749703f05055e753f2.jpg_srz_1600_1200_85_22_0.50_1.20_0.00_jpg_srz");
+	background-attachment: fixed;
+	background-position: center;
+}
+
+/*"Farmers Market Central" text*/
+h1 {
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #FFF;
+    font-size: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    line-height: 76px;
+    margin-bottom: 10px;
+    padding: 0px 10px;
+    text-align: center;
+}
+
+/* Headings of other major panels/sections*/
+h2 {
+	padding: 1em;
+	text-align: center;
+	color: #FFF;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Table headings */
+th {
+	font-size: 1.5em;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Table background panel styling*/
+table {
+	background-color: white;
+	opacity: 0.8;
+	color: black;
+}
+
+/* Spacing of search box */
+.search-input {
+	align-content: center;
+	margin-bottom: 15px;
+}
+
+/* Spacing of input groups for adding market */
+.input-group {
+	margin-bottom: 5px;
+}
+
+.input-group-addon {
+	border-radius: 0;
+	border: none;
+	background-color: #fff;
+	opacity: 0.9;
+}
+
+/* Spacing of button */
+.btn {
+	margin-bottom: 15px;
+	border: none;
+	border-radius: 0;
+}
+
+/* width of container for images along bottom */
+.container {
+	width: 100%;
+}
+
+/* Spacing of search form */
+.form-group {
+	margin-top: 10px;
+}
+
+.form-control {
+	background-color: white;
+	opacity: 0.8;
+	color: black;
+	border: none;
+	border-radius: 0;
+}
+
+
+/* Display map */
+#map {
+    height: 400px;
+    width: 100%;
+    margin-left: 5px;
+    margin-bottom: 20px;
+}
