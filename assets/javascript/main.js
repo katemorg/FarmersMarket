@@ -119,7 +119,10 @@ database.ref().on("value", function(snapshot) {
 $("#form--market-add").validate({
   rules: {
     marketNameAdd: "required",
-    marketLocationAdd: "required",
+    marketAddressAdd: "required",
+    marketStateAdd: "required",
+    marketCityAdd: "required",
+    marketZipAdd: "required",
     marketProductsAdd: {
       required: true,
     },
