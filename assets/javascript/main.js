@@ -26,6 +26,11 @@ $(function() {
     var zipcode = $("#zip-code").val().trim();
     getMarkets(zipcode);
   });
+  $("#searchZip").on("click", function() {
+    var zipcode = $("#textZip").val().trim();
+    getMarkets(zipcode);
+  });
+
 });
 
 
@@ -145,7 +150,6 @@ function addMarket() {
   });
 }
 
-
 // Populate modal fields
 $("#btnAddMarket").on("click", function() {
   event.preventDefault();
@@ -162,3 +166,4 @@ $("#btnAddMarket").on("click", function() {
   //   }
   // });
 });
+
