@@ -48,24 +48,26 @@
           <div class="row">
             <div class="panel-body">
               <h2 id="market-add">Add Your Market</h2>
-              <div class="input-group">
-                <span class="input-group-addon" id="sizing-addon2">Name</span>
-                <input type="text" class="form-control" placeholder="Market Name" aria-describedby="sizing-addon2">
-              </div>
-              <div class="input-group">
-                <span class="input-group-addon" id="sizing-addon2">Location</span>
-                <input type="text" class="form-control" placeholder="123 farmers way, city, state" aria-describedby="sizing-addon2">
-              </div>
-              <div class="input-group">
-                <span class="input-group-addon" id="sizing-addon2">Products (seperate by a comma)</span>
-                <input type="text" class="form-control" placeholder="Honey, Organic, Heirloom..." aria-describedby="sizing-addon2">
-              </div>
-              <div class="input-group">
-                <span class="input-group-addon" id="sizing-addon2">Contact (phone #, email, social media site)</span>
-                <input type="text" class="form-control" placeholder="555-555-5555" aria-describedby="sizing-addon2">
-              </div>
-              <!-- submit button -->
-              <input class="btn btn-default" type="submit" value="Submit" id="button-submit">
+              <form id="form--market-add">
+                <div class="input-group">
+                  <label class="input-group-addon" for="marketNameAdd">Name</label>
+                  <input type="text" id="marketNameAdd" name="marketNameAdd" id="market" class="form-control" placeholder="Market Name">
+                </div>
+                <div class="input-group">
+                  <label class="input-group-addon" for="marketLocationAdd">Location</label>
+                  <input type="text" id="marketLocationAdd" name="marketLocationAdd" class="form-control" placeholder="123 farmers way, city, state">
+                </div>
+                <div class="input-group">
+                  <label class="input-group-addon" for="marketProductsAdd">Products (seperate by a comma)</label>
+                  <input type="text" id="marketProductsAdd" name="marketProductsAdd" class="form-control" placeholder="Honey, Organic, Heirloom...">
+                </div>
+                <div class="input-group">
+                  <label class="input-group-addon" for="marketContactAdd">Contact (phone #, email, social media site)</label>
+                  <input type="text" id="marketContactAdd" name="marketContactAdd" class="form-control" placeholder="555-555-5555">
+                </div>
+                <!-- submit button -->
+                <button class="btn btn-default" type="submit" id="button-submit">Submit</button>
+              </form>
             </div>
           </div>
         </div>
@@ -112,6 +114,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrPWDDXGVQzoz4zKAHTrXEmlbPIDxGTLk&callback=initMap" async defer></script>
+  <script src="assets/javascript/jquery.validate.js"></script>
   <script type="text/javascript">
   // Initialize Firebase
   var config = {
