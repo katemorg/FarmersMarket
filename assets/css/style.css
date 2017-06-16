@@ -47,7 +47,7 @@ table {
 /* Spacing of search box */
 .search-input {
 	align-content: center;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 }
 
 /* Spacing of input groups for adding market */
@@ -63,10 +63,19 @@ table {
 }
 
 /* Spacing of button */
-.btn {
-	margin-bottom: 15px;
+.btn-search {
+	margin-bottom: 10px;
 	border: none;
 	border-radius: 0;
+}
+
+.btn-addMarket {
+	margin-bottom: 5px;
+	font-size: 1.5em;
+	padding: 1em;
+	width: 100%;
+	border-radius: 0;
+
 }
 
 /* width of container for images along bottom */
@@ -145,4 +154,5 @@ table {
     width: 100%;
     width: 600px;
   }
+
 	}
