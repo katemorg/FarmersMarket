@@ -11,20 +11,7 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
-
 <body>
-<div id="control">
-    
-    <form method="get" id="chooseZip">
-      <button type="submit" class="learnButton">Use current location</button>
-      <button type="button" id="searchZip" class="learnButton">Search by Zip Code</button>
-      <div class="clear"></div>
-      <div class="zipSearch">
-        <input id="textZip" type="text" name="zip" placeholder="enter your zip code" autofocus>
-        <button type="submit" class="learnButton">Search</button>
-      </div>
-      <div class="clear"></div>
-    </form>
   <!--Main container, fluid to fill entire window-->
   <div class="container-fluid">
     <header>
@@ -49,36 +36,14 @@
                   <input type="number" class="form-control search-input" id="zip-code" placeholder="Enter Zip Code">
                   <!-- search button -->
                   <button type="button" class="btn btn-default" id="button-search">Search</button>
+                 
                 </div>
               </form>
             </div>
           </div>
+           <button class='btn btn-default btn-sm btn-addMarket' role='button' data-toggle='modal' data-target='#modal--market-add'>Add Market</button>
           <!--Row for Map-->
           <div class="row" id="map">
-          </div>
-          <!--Row for form to add market-->
-          <div class="row">
-            <div class="panel-body">
-              <h2 id="market-add">Add Your Market</h2>
-              <div class="input-group">
-                <span class="input-group-addon" id="sizing-addon2">Name</span>
-                <input type="text" class="form-control" id="name" placeholder="Market Name" aria-describedby="sizing-addon2">
-              </div>
-              <div class="input-group">
-                <span class="input-group-addon" id="sizing-addon2">Location</span>
-                <input type="text" class="form-control" id="Location" placeholder="123 farmers way, city, state" aria-describedby="sizing-addon2">
-              </div>
-              <div class="input-group">
-                <span class="input-group-addon" id="sizing-addon2">Products (seperate by a comma)</span>
-                <input type="text" class="form-control" id="Products" placeholder="Honey, Organic, Heirloom..." aria-describedby="sizing-addon2">
-              </div>
-              <div class="input-group">
-                <span class="input-group-addon" id="sizing-addon2">Contact (phone #, email, social media site)</span>
-                <input type="text" class="form-control" id="Contact" placeholder="555-555-5555" aria-describedby="sizing-addon2">
-              </div>
-              <!-- submit button -->
-              <input class="btn btn-default" type="submit" value="Submit" id="button-submit">
-            </div>
           </div>
         </div>
       </div>
@@ -88,7 +53,7 @@
         <!--Row for list of markets-->
         <div class="row" id="consearch">
           <!--Panel to hold table (keeps styling consistent)-->
-          <div class="panel-body"> <div class="panel-body table-responsive">
+          <div class="panel-body">
             <h2>Markets in Your Area</h2>
             <table class="table table-hover">
               <thead>
@@ -101,11 +66,13 @@
                 </tr>
               </thead>
               <tbody>
+                <tr>
                   <td>VEGFRESH Market</td>
                   <td>Medina, Ohio</td>
                   <td>Fruit, veggies, honey</td>
                   <td>330-333-1234</td>
                   <td>7/4/2017 from 8am-5pm</td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -113,15 +80,56 @@
       </div>
       <!--End of right-side column-->
     </div>
-    <!--End of main row-->
-    <footer>
-    </footer>
+    <!-- Modal -->
+    <div class="modal fade" id="modal--market-add" tabindex="-1" role="dialog" aria-labelledby="modal--market-add">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">"
+          <div class="modal-body">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Add Market</h3>
+              </div>
+              <div class="panel-body">
+                <form id="form--market-add">
+                  <div class="input-group">
+                    <label class="input-group-addon" for="marketNameAdd">Name</label>
+                    <input type="text" id="marketNameAdd" name="marketNameAdd" id="market" class="form-control" placeholder="Market Name">
+                  </div>
+                  <div class="input-group">
+                    <label class="input-group-addon" for="marketLocationAdd">Location</label>
+                    <input type="text" id="marketLocationAdd" name="marketLocationAdd" class="form-control" placeholder="123 farmers way, city, state">
+                  </div>
+                  <div class="input-group">
+                    <label class="input-group-addon" for="marketProductsAdd">Products (seperate by a comma)</label>
+                    <input type="text" id="marketProductsAdd" name="marketProductsAdd" class="form-control" placeholder="Honey, Organic, Heirloom...">
+                  </div>
+                  <div class="input-group">
+                    <label class="input-group-addon" for="marketContactAdd">Contact (phone #, email, social media site)</label>
+                    <input type="text" id="marketContactAdd" name="marketContactAdd" class="form-control" placeholder="555-555-5555">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" id="btn-AddMarket" class="btn btn-primary">Add Market</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Modal -->
+  </div>
+  <!--End of main row-->
+  <footer>
+  </footer>
   </div>
   <!--End of main container-->
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrPWDDXGVQzoz4zKAHTrXEmlbPIDxGTLk&callback=initMap" async defer></script>
+  <script src="assets/javascript/jquery.validate.js"></script>
   <script type="text/javascript">
   // Initialize Firebase
   var config = {
@@ -133,12 +141,10 @@
     messagingSenderId: "453822887828"
   };
   firebase.initializeApp(config);
-  var database = firebase.database();
   </script>
+  <script type="text/javascript" src="assets/javascript/app.js"></script>
   <script type="text/javascript" src="assets/javascript/main.js"></script>
   <script type="text/javascript" src="assets/javascript/map.js"></script>
-  <script type="text/javascript" src="assets/javascript/search.js"></script>
-
 </body>
 
 </html>
