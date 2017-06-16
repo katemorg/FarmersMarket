@@ -106,7 +106,7 @@ table {
 #map {
     height: 400px;
     width: 100%;
-    margin-left: 5px;
+    margin-left: 1px;
     margin-bottom: 20px;
 }
 
@@ -137,6 +137,12 @@ table {
     	font-size: 14px;
     }
 
+    .btn-addMarket {
+    	font-size: 14px;
+    	padding: 0.5em;
+    }
+
+
   /* The wrapper's width will be 600px */
   .wrapper {
     width: 100%;
@@ -152,6 +158,11 @@ table {
 #zip-code{
 	max-width: 200px;
 }
+
+    .btn-addMarket {
+    	font-size: 14px;
+    	padding: 0.5em;
+    }
 
 .wrapper {
     width: 100%;
