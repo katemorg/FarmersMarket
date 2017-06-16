@@ -64,8 +64,6 @@ function getDetails(market, index) {
     <tr> \
       <td>' + name + '</td> \
       <td>' + '<a href="' + currentMarket["GoogleLink"] + '">' + currentMarket["Address"] + '</a></td> \
-      <td>' + currentMarket["Products"] + '</td> \
-      <td></td> \
       <td>' + currentMarket["Schedule"] + '</td> \
     </tr>';
     $(".table tbody").append(newRow);
@@ -132,8 +130,6 @@ $("#form--market-add").validate({
   },
   submitHandler: function(form, event) {
     event.preventDefault();
-    // AddTrain();
-    alert(yay);
   }
 });
 
@@ -150,7 +146,7 @@ function addMarket() {
 
 
 // Populate modal fields
-$("#btnAddMarket").on("click", function() {
+$("#btn-AddMarket").on("click", function() {
   event.preventDefault();
   $("#form--market-add").valid();
   // var trainID = $(this).closest("tr").attr("data-id");
