@@ -5,22 +5,27 @@
 
 body { 
 	font-family: 'Roboto Slab', serif;
-	background-image: url("https://static.wixstatic.com/media/8bbc01_5fbf6c901c9842749703f05055e753f2.jpg_srz_1600_1200_85_22_0.50_1.20_0.00_jpg_srz");
 	background-attachment: fixed;
 	background-position: center;
+	background-image: 
+    linear-gradient(
+      rgba(192, 192, 192, 0.2),
+      rgba(192, 192, 192, 0.2)
+    ),
+    url("http://thedcgazette.com//wp-content/uploads/2015/12/Variety-Vegetables.jpg");
 }
 
 /*"Farmers Market Central" text*/
 h1 {
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: bold;
     color: #FFF;
-    font-size: 50px;
-    background-color: rgba(0, 0, 0, 0.5);
-    line-height: 76px;
+    font-size: 60px;
+    background-color: rgba(0, 0, 0, 0.6);
+    line-height: 90px;
     margin-bottom: 10px;
-    padding: 0px 10px;
     text-align: center;
+    padding: 15px;
 }
 
 /* Headings of other major panels/sections*/
@@ -28,7 +33,7 @@ h2 {
 	padding: 1em;
 	text-align: center;
 	color: #FFF;
-	background-color: rgba(0, 0, 0, 0.4);
+	background-color: rgba(0, 0, 0, 0.6);
 }
 
 /* Table headings */
@@ -72,7 +77,7 @@ table {
 .btn-addMarket {
 	margin-bottom: 5px;
 	font-size: 1.5em;
-	padding: 1em;
+	padding: 0.75em;
 	width: 100%;
 	border-radius: 0;
 
