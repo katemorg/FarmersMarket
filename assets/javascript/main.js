@@ -106,6 +106,7 @@ database.ref().on("value", function(snapshot) {
         var thisObject = data[key];
         // console.log(data[key]);
 
+
         // Add new row here
       }
     } else {
