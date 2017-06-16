@@ -26,6 +26,11 @@ $(function() {
     var zipcode = $("#zip-code").val().trim();
     getMarkets(zipcode);
   });
+  $("#searchZip").on("click", function() {
+    var zipcode = $("#textZip").val().trim();
+    getMarkets(zipcode);
+  });
+
 });
 
 
@@ -90,7 +95,7 @@ function displayMarkets(detailresults) {
       <td></td> \
       <td>' + currentMarket["Schedule"] + '</td> \
     </tr>';
-  console.log(newRow);
+  // console.log(newRow);
   $(".table tbody").append(newRow);
 }
 
@@ -101,7 +106,7 @@ database.ref().on("value", function(snapshot) {
     if (data) {
       for (var key in data) {
         var thisObject = data[key];
-        console.log(data[key]);
+        // console.log(data[key]);
 
         // Add new row here
       }
@@ -145,9 +150,8 @@ function addMarket() {
   });
 }
 
-
 // Populate modal fields
-$("#btnAddMarket").on("click", function() {
+$("#btn-AddMarket").on("click", function() {
   event.preventDefault();
   $("#form--market-add").valid();
   // var trainID = $(this).closest("tr").attr("data-id");
@@ -162,3 +166,4 @@ $("#btnAddMarket").on("click", function() {
   //   }
   // });
 });
+
