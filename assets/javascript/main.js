@@ -69,8 +69,6 @@ function getDetails(market, index) {
     <tr> \
       <td>' + name + '</td> \
       <td>' + '<a href="' + currentMarket["GoogleLink"] + '">' + currentMarket["Address"] + '</a></td> \
-      <td>' + currentMarket["Products"] + '</td> \
-      <td></td> \
       <td>' + currentMarket["Schedule"] + '</td> \
     </tr>';
     $(".table tbody").append(newRow);
@@ -124,7 +122,10 @@ database.ref().on("value", function(snapshot) {
 $("#form--market-add").validate({
   rules: {
     marketNameAdd: "required",
-    marketLocationAdd: "required",
+    marketAddressAdd: "required",
+    marketStateAdd: "required",
+    marketCityAdd: "required",
+    marketZipAdd: "required",
     marketProductsAdd: {
       required: true,
     },
@@ -134,8 +135,6 @@ $("#form--market-add").validate({
   },
   submitHandler: function(form, event) {
     event.preventDefault();
-    // AddTrain();
-    alert(yay);
   }
 });
 

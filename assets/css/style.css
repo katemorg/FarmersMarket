@@ -47,7 +47,7 @@ table {
 /* Spacing of search box */
 .search-input {
 	align-content: center;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 }
 
 /* Spacing of input groups for adding market */
@@ -63,10 +63,19 @@ table {
 }
 
 /* Spacing of button */
-.btn {
-	margin-bottom: 15px;
+.btn-search {
+	margin-bottom: 10px;
 	border: none;
 	border-radius: 0;
+}
+
+.btn-addMarket {
+	margin-bottom: 5px;
+	font-size: 1.5em;
+	padding: 1em;
+	width: 100%;
+	border-radius: 0;
+
 }
 
 /* width of container for images along bottom */
@@ -95,3 +104,52 @@ table {
     margin-left: 5px;
     margin-bottom: 20px;
 }
+
+@media screen and (max-width: 768px) {
+  /* The body's bg color will be #333 */
+.container {
+  width: 100%;
+  max-width: 768px;
+  margin: 0 auto;
+  clear: both;
+}
+
+#map {
+	height:300px;
+}
+
+#zip-code{
+	max-width: 200px;
+}
+
+ h1{
+        font-size:20px;
+    }
+    h2 {
+    	font-size: 16px;
+    }
+    th {
+    	font-size: 14px;
+    }
+
+  /* The wrapper's width will be 600px */
+  .wrapper {
+    width: 100%;
+    width: 600px;
+  }
+}
+
+@media screen and (max-width: 667px) {
+#map {
+	height:200px;
+}
+
+#zip-code{
+	max-width: 200px;
+}
+
+.wrapper {
+    width: 100%;
+    width: 600px;
+  }
+	}
