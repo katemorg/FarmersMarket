@@ -88,14 +88,12 @@ function displayMarkets(detailresults) {
   var currentMarket = detailresults.marketdetails;
   var newRow = ' \
     <tr> \
-      <td>' + 'NAME GOES HERE' + '</td> \
+      <td>' + name + '</td> \
       <td>' + '<a href="' + currentMarket["GoogleLink"] + '">' + currentMarket["Address"] + '</a></td> \
-      <td>' + currentMarket["Products"] + '</td> \
-      <td></td> \
       <td>' + currentMarket["Schedule"] + '</td> \
+      <td>' + '<button type="button" class="btn btn-default btn-moreInfo" role="button" data-toggle="modal" data-target="#modal--moreInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>' + '</td> \
     </tr>';
-  // console.log(newRow);
-  $(".table tbody").append(newRow);
+    $(".table tbody").append(newRow);
 }
 
 // Populate the table with the list farmers markets
