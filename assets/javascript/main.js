@@ -178,7 +178,12 @@ $(".table").on("click", ".btn-moreInfo", function() {
   var marketName = $(this).closest("tr").attr("data-name");
   var address = $(this).closest("tr").attr("data-address");
   var products = $(this).closest("tr").attr("data-products");
+  var schedule = $(this).closest("tr").attr("data-schedule");
+  /*var contact = $(this).closest("tr").attr("data-contact");*/
 
   $(".moreInfo-name").html(marketName);
-  $(".moreInfo-products").html(products);
+  $("#moreInfo-products").html(products);
+  $("#moreInfo-address").html(address);
+  $("#moreInfo-schedule").html(schedule);
+  /*$("#moreInfo-contact").html(contact);*/
 });
