@@ -27,12 +27,17 @@ $(function() {
     getMarkets(zipcode);
   });
   $("#searchZip").on("click", function() {
-    var zipcode = $("#textZip").val().trim();
+    var zipcode = $("#textZip").val().trim(); 
     getMarkets(zipcode);
   });
 
 });
 
+function popModal() {
+  $("#popButton").on("click", function(){
+      $("#popProducts").html("Products: " + "rules.marketProductsAdd");
+  });
+}
 
 function getMarkets(zip) {
   $.ajax({
@@ -70,7 +75,7 @@ function getDetails(market, index) {
       <td>' + name + '</td> \
       <td>' + '<a href="' + currentMarket["GoogleLink"] + '">' + currentMarket["Address"] + '</a></td> \
       <td>' + currentMarket["Schedule"] + '</td> \
-      <td>' + '<button type="button" class="btn btn-default btn-moreInfo" role="button" data-toggle="modal" data-target="#modal--moreInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>' + '</td> \
+      <td>' + '<button type="button" class="btn btn-default btn-moreInfo" id="popButton" role="button" data-toggle="modal" data-target="#modal--moreInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>' + '</td> \
     </tr>';
     $(".table tbody").append(newRow);
   }
@@ -173,7 +178,12 @@ $(".table").on("click", ".btn-moreInfo", function() {
   var marketName = $(this).closest("tr").attr("data-name");
   var address = $(this).closest("tr").attr("data-address");
   var products = $(this).closest("tr").attr("data-products");
+  var schedule = $(this).closest("tr").attr("data-schedule");
+  /*var contact = $(this).closest("tr").attr("data-contact");*/
 
   $(".moreInfo-name").html(marketName);
-  $(".moreInfo-products").html(products);
+  $("#moreInfo-products").html(products);
+  $("#moreInfo-address").html(address);
+  $("#moreInfo-schedule").html(schedule);
+  /*$("#moreInfo-contact").html(contact);*/
 });
