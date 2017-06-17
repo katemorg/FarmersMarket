@@ -108,6 +108,16 @@ table {
     margin-bottom: 20px;
 }
 
+#modal-footer{
+  padding: 17px 0px 0px 0px;
+  margin: 0;
+}
+
+.panel-default{
+  padding: 0;
+  margin: 0;
+}
+
 @media screen and (max-width: 768px) {
   /* The body's bg color will be #333 */
   .container {
