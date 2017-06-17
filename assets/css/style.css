@@ -4,7 +4,7 @@
 }
 
 body { 
-	font-family: 'Roboto Slab', serif;
+	font-family: 'Lato', sans-serif;
 	background-attachment: fixed;
 	background-position: center;
 	background-image: 
@@ -79,6 +79,12 @@ table {
 	padding: 0.75em;
 	width: 100%;
 	border-radius: 0;
+}
+
+.btn-moreInfo {
+	background-color: #fff;
+	border-radius: 0;
+	margin-right: 20px;
 }
 
 /* width of container for images along bottom */
