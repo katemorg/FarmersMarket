@@ -27,12 +27,17 @@ $(function() {
     getMarkets(zipcode);
   });
   $("#searchZip").on("click", function() {
-    var zipcode = $("#textZip").val().trim();
+    var zipcode = $("#textZip").val().trim(); 
     getMarkets(zipcode);
   });
 
 });
 
+function popModal() {
+  $("#popButton").on("click", function(){
+      $("#popProducts").html("Products: " + "rules.marketProductsAdd");
+  });
+}
 
 function getMarkets(zip) {
   $.ajax({
@@ -70,7 +75,7 @@ function getDetails(market, index) {
       <td>' + name + '</td> \
       <td>' + '<a href="' + currentMarket["GoogleLink"] + '">' + currentMarket["Address"] + '</a></td> \
       <td>' + currentMarket["Schedule"] + '</td> \
-      <td>' + '<button type="button" class="btn btn-default btn-moreInfo" role="button" data-toggle="modal" data-target="#modal--moreInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>' + '</td> \
+      <td>' + '<button type="button" class="btn btn-default btn-moreInfo" id="popButton" role="button" data-toggle="modal" data-target="#modal--moreInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>' + '</td> \
     </tr>';
     $(".table tbody").append(newRow);
   }
@@ -148,6 +153,7 @@ function addMarket() {
     schedule: market.schedule,
   });
 }
+
 
 // Populate modal fields
 $("#btn-AddMarket").on("click", function() {
