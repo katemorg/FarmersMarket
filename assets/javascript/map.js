@@ -37,7 +37,7 @@ $(function() {
           }
         }
       );
-      // displayOnMap();
+      displayOnMap();
     }
 
     navigator.geolocation.getCurrentPosition(success, error);

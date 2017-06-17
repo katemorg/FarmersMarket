@@ -24,10 +24,12 @@ function farmersMarket() {
 $(function() {
   $("#button-search").on("click", function() {
     var zipcode = $("#zip-code").val().trim();
+    markets = [];
+    $(".table tbody").empty();
     getMarkets(zipcode);
   });
   $("#searchZip").on("click", function() {
-    var zipcode = $("#textZip").val().trim();
+    var zipcode = $("#zip-code").val().trim();
     getMarkets(zipcode);
   });
 
@@ -62,11 +64,12 @@ function marketResultHandler(detailresults) {
 function getDetails(market, index) {
   var id = market.id;
   var name = market.name;
+  name = name.replace(/\d+\.\d+/, " ");
 
   window['detailResultHandler' + id] = function(data) {
     var currentMarket = data.marketdetails;
     var newRow = ' \
-    <tr data-name="' + name + '" data-address="' + currentMarket['Address'] + '" data-schedule="' + currentMarket['Schedule'] + '" data-products="' + currentMarket['Products'] + '""> \
+    <tr data-name="' + name + '" data-address="' + currentMarket['Address'] + '" data-schedule="' + currentMarket['Schedule'] + '" data-products="' + currentMarket['Products'] + '" data-contact="' + currentMarket['Contact'] + '"> \
       <td>' + name + '</td> \
       <td>' + '<a href="' + currentMarket["GoogleLink"] + '">' + currentMarket["Address"] + '</a></td> \
       <td>' + currentMarket["Schedule"] + '</td> \
