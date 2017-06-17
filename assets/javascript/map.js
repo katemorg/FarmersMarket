@@ -15,6 +15,28 @@ $(function() {
 
     function success(pos) {
       userCords = pos.coords;
+      $.get(
+        "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + userCords.latitude + ", " + userCords.longitude + "&sensor=true",
+        function(response) {
+          var searchKey = "postal_code";
+          var zipcodeObject = null;
+          for (var i = 0; i < response.results[0].address_components.length; i++) {
+            var thisAddressObject = response.results[0].address_components[i];
+            var addressTypes = thisAddressObject.types;
+            var search = addressTypes.indexOf(searchKey);
+            if (search > -1) {
+              zipcodeObject = thisAddressObject;
+              // alert(zipcodeObject.short_name);
+              $("#zip-code").val(zipcodeObject.short_name);
+              $("#button-search").click();
+              break;
+            }
+          }
+          if (zipcodeObject !== null) {
+            console.log(zipcodeObject);
+          }
+        }
+      );
       displayOnMap();
     }
 
@@ -42,18 +64,16 @@ $(function() {
   mapinfo = new google.maps.InfoWindow({
     content: "loading..."
   });
-
   map = new google.maps.Map(document.getElementById('map'), mapsettings);
 
-  /*$('#chooseZip').submit(*/
   function displayOnMap() {
     var userZip = $("#textZip").val();
     var accessURL;
 
     if (userZip) {
-      accessURL = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + userZip;
+      accessURL = "https://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + userZip;
     } else {
-      accessURL = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/locSearch?lat=" + userCords.latitude + "&lng=" + userCords.longitude;
+      accessURL = "https://search.ams.usda.gov/farmersmarkets/v1/data.svc/locSearch?lat=" + userCords.latitude + "&lng=" + userCords.longitude;
     }
 
     $.ajax({
@@ -72,18 +92,15 @@ $(function() {
           $.ajax({
             type: "GET",
             contentType: "application/json; charset=utf-8",
-            url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=" + v,
+            url: "https://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=" + v,
             dataType: 'jsonp',
             success: function(data) {
 
               for (var key in data) {
-
                 var results = data[key];
                 var googleLink = results['GoogleLink'];
                 var latLong = decodeURIComponent(googleLink.substring(googleLink.indexOf("=") + 1, googleLink.lastIndexOf("(")));
-
                 var split = latLong.split(',');
-
                 var latitude = parseFloat(split[0]);
                 var longitude = parseFloat(split[1]);
 
@@ -101,11 +118,8 @@ $(function() {
                     '</div>'
                 });
 
-
                 latlong.push(myLatlng);
-
                 markerpositioning.push(marker_all);
-
                 counter++;
               };
 
@@ -113,8 +127,6 @@ $(function() {
                 mapinfo.setContent(this.html);
                 mapinfo.open(map, this);
               });
-
-
 
               var bounds = new google.maps.LatLngBounds();
               for (var i = 0, LtLgLen = latlong.length; i < LtLgLen; i++) {
@@ -126,8 +138,6 @@ $(function() {
         });
       }
     });
-
     return false;
   }
-  // )0;
 });

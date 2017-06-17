@@ -24,13 +24,10 @@ function farmersMarket() {
 $(function() {
   $("#button-search").on("click", function() {
     var zipcode = $("#zip-code").val().trim();
+    markets = [];
+    $(".table tbody").empty();
     getMarkets(zipcode);
   });
-  $("#searchZip").on("click", function() {
-    var zipcode = $("#textZip").val().trim();
-    getMarkets(zipcode);
-  });
-
 });
 
 
@@ -38,7 +35,7 @@ function getMarkets(zip) {
   $.ajax({
     type: "GET",
     contentType: "application/json; charset=utf-8",
-    url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + zip,
+    url: "https://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + zip,
     dataType: 'jsonp',
     jsonpCallback: 'marketResultHandler'
   });
@@ -62,11 +59,12 @@ function marketResultHandler(detailresults) {
 function getDetails(market, index) {
   var id = market.id;
   var name = market.name;
+  name = name.replace(/\d+\.\d+/, " ");
 
   window['detailResultHandler' + id] = function(data) {
     var currentMarket = data.marketdetails;
     var newRow = ' \
-    <tr> \
+    <tr data-name="' + name + '" data-address="' + currentMarket['Address'] + '" data-schedule="' + currentMarket['Schedule'] + '" data-products="' + currentMarket['Products'] + '" data-contact="' + currentMarket['Contact'] + '"> \
       <td>' + name + '</td> \
       <td>' + '<a href="' + currentMarket["GoogleLink"] + '">' + currentMarket["Address"] + '</a></td> \
       <td>' + currentMarket["Schedule"] + '</td> \
@@ -78,7 +76,7 @@ function getDetails(market, index) {
   $.ajax({
     type: "GET",
     contentType: "application/json; charset=utf-8",
-    url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=" + id,
+    url: "https://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=" + id,
     dataType: 'jsonp',
     jsonpCallback: 'detailResultHandler' + id
   });
@@ -93,7 +91,7 @@ function displayMarkets(detailresults) {
       <td>' + currentMarket["Schedule"] + '</td> \
       <td>' + '<button type="button" class="btn btn-default btn-moreInfo" role="button" data-toggle="modal" data-target="#modal--moreInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>' + '</td> \
     </tr>';
-    $(".table tbody").append(newRow);
+  $(".table tbody").append(newRow);
 }
 
 // Populate the table with the list farmers markets
@@ -149,6 +147,7 @@ function addMarket() {
   });
 }
 
+
 // Populate modal fields
 $("#btn-AddMarket").on("click", function() {
   event.preventDefault();
@@ -166,3 +165,18 @@ $("#btn-AddMarket").on("click", function() {
   // });
 });
 
+
+$(".table").on("click", ".btn-moreInfo", function() {
+  event.preventDefault();
+  var marketName = $(this).closest("tr").attr("data-name");
+  var address = $(this).closest("tr").attr("data-address");
+  var products = $(this).closest("tr").attr("data-products");
+  var schedule = $(this).closest("tr").attr("data-schedule");
+  /*var contact = $(this).closest("tr").attr("data-contact");*/
+
+  $(".moreInfo-name").html(marketName);
+  $("#moreInfo-products").html(products);
+  $("#moreInfo-address").html(address);
+  $("#moreInfo-schedule").html(schedule);
+  /*$("#moreInfo-contact").html(contact);*/
+});
