@@ -24,20 +24,12 @@ function farmersMarket() {
 $(function() {
   $("#button-search").on("click", function() {
     var zipcode = $("#zip-code").val().trim();
+    markets = [];
+    $(".table tbody").empty();
     getMarkets(zipcode);
   });
-  $("#searchZip").on("click", function() {
-    var zipcode = $("#textZip").val().trim(); 
-    getMarkets(zipcode);
-  });
-
 });
 
-function popModal() {
-  $("#popButton").on("click", function(){
-      $("#popProducts").html("Products: " + "rules.marketProductsAdd");
-  });
-}
 
 function getMarkets(zip) {
   $.ajax({
@@ -67,15 +59,16 @@ function marketResultHandler(detailresults) {
 function getDetails(market, index) {
   var id = market.id;
   var name = market.name;
+  name = name.replace(/\d+\.\d+/, " ");
 
   window['detailResultHandler' + id] = function(data) {
     var currentMarket = data.marketdetails;
     var newRow = ' \
-    <tr data-name="' + name + '" data-address="' + currentMarket['Address'] + '" data-schedule="' + currentMarket['Schedule'] + '" data-products="' + currentMarket['Products'] + '""> \
+    <tr data-name="' + name + '" data-address="' + currentMarket['Address'] + '" data-schedule="' + currentMarket['Schedule'] + '" data-products="' + currentMarket['Products'] + '" data-contact="' + currentMarket['Contact'] + '"> \
       <td>' + name + '</td> \
       <td>' + '<a href="' + currentMarket["GoogleLink"] + '">' + currentMarket["Address"] + '</a></td> \
       <td>' + currentMarket["Schedule"] + '</td> \
-      <td>' + '<button type="button" class="btn btn-default btn-moreInfo" id="popButton" role="button" data-toggle="modal" data-target="#modal--moreInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>' + '</td> \
+      <td>' + '<button type="button" class="btn btn-default btn-moreInfo" role="button" data-toggle="modal" data-target="#modal--moreInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>' + '</td> \
     </tr>';
     $(".table tbody").append(newRow);
   }
