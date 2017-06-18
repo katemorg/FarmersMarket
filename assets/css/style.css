@@ -1,0 +1,187 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+body { 
+	font-family: 'Lato', sans-serif;
+	background-attachment: fixed;
+	background-position: center;
+	background-image: 
+    linear-gradient(
+      rgba(192, 192, 192, 0.2),
+      rgba(192, 192, 192, 0.2)
+    ),
+    url("http://thedcgazette.com//wp-content/uploads/2015/12/Variety-Vegetables.jpg");
+}
+
+/*"Farmers Market Central" text*/
+h1 {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #FFF;
+    font-size: 60px;
+    background-color: rgba(0, 0, 0, 0.6);
+    line-height: 90px;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 15px;
+}
+
+/* Headings of other major panels/sections*/
+h2 {
+	padding: 1em;
+	text-align: center;
+	color: #FFF;
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Table headings */
+th {
+	font-size: 1.5em;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Table background panel styling*/
+table {
+	background-color: white;
+	opacity: 0.8;
+	color: black;
+}
+
+/* Spacing of search box */
+.search-input {
+	align-content: center;
+}
+
+/* Spacing of input groups for adding market */
+.input-group {
+	margin-bottom: 5px;
+}
+
+.input-group-addon {
+	border-radius: 0;
+	border: none;
+	background-color: #fff;
+	opacity: 0.9;
+}
+
+/* Spacing of button */
+.btn-search {
+	margin-bottom: 10px;
+	border: none;
+	border-radius: 0;
+}
+
+.btn-addMarket {
+	margin-bottom: 5px;
+	font-size: 1.5em;
+	padding: 0.75em;
+	width: 100%;
+	border-radius: 0;
+}
+
+.btn-moreInfo {
+	background-color: #fff;
+	border-radius: 0;
+	margin-right: 20px;
+}
+
+/* width of container for images along bottom */
+.container {
+	width: 100%;
+}
+
+/* Spacing of search form */
+.form-group {
+	margin-top: 10px;
+}
+
+.form-control {
+	background-color: white;
+	opacity: 0.8;
+	color: black;
+	border: none;
+	border-radius: 0;
+}
+
+
+/* Display map */
+#map {
+    height: 400px;
+    width: 100%;
+    margin-left: 1px;
+    margin-bottom: 20px;
+}
+
+#modal-footer{
+  padding: 17px 0px 0px 0px;
+  margin: 0;
+}
+
+.panel-default{
+  padding: 0;
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  /* The body's bg color will be #333 */
+  .container {
+    width: 100%;
+    max-width: 768px;
+    margin: 0 auto;
+    clear: both;
+  }
+
+  #map {
+  	height:300px;
+  }
+
+  #zip-code{
+  	max-width: 200px;
+  }
+
+
+  h1{
+    font-size:20px;
+  }
+     
+  h2 {
+    font-size: 16px;
+  }
+      
+  th {
+    font-size: 14px;
+  }
+
+  .btn-addMarket {
+    font-size: 14px;
+    padding: 0.5em;
+  }
+
+  /* The wrapper's width will be 600px */
+  .wrapper {
+    width: 100%;
+    width: 600px;
+    }
+}
+
+@media screen and (max-width: 667px) {
+  #map {
+  	height:200px;
+  }
+
+  #zip-code{
+  	max-width: 200px;
+  }
+
+  .btn-addMarket {
+    font-size: 14px;
+    padding: 0.5em;
+  }
+
+  .wrapper {
+    width: 100%;
+    width: 600px;
+    }
+}
