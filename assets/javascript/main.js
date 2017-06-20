@@ -1,3 +1,14 @@
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyCMqAsnjjRovdQtvPkQrpMV1T8hMcPfrZo",
+  authDomain: "farmers-market-1497106306900.firebaseapp.com",
+  databaseURL: "https://farmers-market-1497106306900.firebaseio.com",
+  projectId: "farmers-market-1497106306900",
+  storageBucket: "farmers-market-1497106306900.appspot.com",
+  messagingSenderId: "453822887828"
+};
+firebase.initializeApp(config);
+
 var database = firebase.database();
 var markets = [];
 var latlong = [];
@@ -13,8 +24,47 @@ function farmersMarket() {
   this.schedule = null;
 }
 
+$(function() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(success, error);
+
+    function error(err) {
+      console.warn('ERROR(' + err.code + '): ' + err.message);
+    }
+
+    function success(pos) {
+      var userCords = pos.coords;
+      $.get(
+        "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + userCords.latitude + ", " + userCords.longitude + "&sensor=true",
+        function(response) {
+          var searchKey = "postal_code";
+          var zipcodeObject = null;
+          for (var i = 0; i < response.results[0].address_components.length; i++) {
+            var thisAddressObject = response.results[0].address_components[i];
+            var addressTypes = thisAddressObject.types;
+            var search = addressTypes.indexOf(searchKey);
+            if (search > -1) {
+              zipcodeObject = thisAddressObject;
+              $("#zip-code").val(zipcodeObject.short_name);
+              $("#button-search").click();
+              break;
+            }
+          }
+          if (zipcodeObject !== null) {
+            console.log(zipcodeObject);
+          }
+        }
+      );
+      // displayOnMap();
+    }
+  } else {
+    console.log("Geolocation does not work. Search manually");
+  }
+});
+
 /**
- * Set up the google map and place on to paage
+ * Creates a new google map
+ * Location is set to Chicago and zoomed out to show the US
  */
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
@@ -153,23 +203,23 @@ function displayMarkets(detailresults) {
 
 }
 
-// Populate the table with the list farmers markets
-database.ref().on("value", function(snapshot) {
-    var data = snapshot.val();
-    $(".table tbody").empty();
-    if (data) {
-      for (var key in data) {
-        var thisObject = data[key];
-      }
-    } else {
-      $(".table tbody").append("No farmers markets add one.")
-    }
-  },
-  function(errorObject) {
-    console.log("The read failed: " + errorObject.code)
-    $(".table tbody").append("Error getting farmers markets schedule!");
-  }
-);
+// // Populate the table with the list farmers markets
+// database.ref().on("value", function(snapshot) {
+//     var data = snapshot.val();
+//     $(".table tbody").empty();
+//     if (data) {
+//       for (var key in data) {
+//         var thisObject = data[key];
+//       }
+//     } else {
+//       $(".table tbody").append("No farmers markets add one.");
+//     }
+//   },
+//   function(errorObject) {
+//     console.log("The read failed: " + errorObject.code);
+//     $(".table tbody").append("Error getting farmers markets schedule!");
+//   }
+// );
 
 // Function to validate user input on form before submitting
 $("#form--market-add").validate({
@@ -191,21 +241,23 @@ $("#form--market-add").validate({
   }
 });
 
-function addMarket() {
-  database.ref().push({
-    id: market.id,
-    name: market.name,
-    address: market.address,
-    googleLink: market.googleLink,
-    products: market.products,
-    schedule: market.schedule,
-  });
-}
+
+
+// function addMarket() {
+//   database.ref().push({
+//     id: market.id,
+//     name: market.name,
+//     address: market.address,
+//     googleLink: market.googleLink,
+//     products: market.products,
+//     schedule: market.schedule,
+//   });
+// }
 
 
 $("#btn-AddMarket").on("click", function() {
   event.preventDefault();
-  $("#form--market-add").valid();
+  $("#form--market-add").valid()
 });
 
 /**
