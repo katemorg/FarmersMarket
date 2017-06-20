@@ -157,6 +157,12 @@ td {
     margin-bottom: 20px;
 }
 
+.g-signin2 {
+  position: absolute;
+  left: 0;
+  top: -170px;
+}
+
 
 /* Media Queries */
 
