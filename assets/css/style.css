@@ -1,6 +1,6 @@
 * {
 	box-sizing: border-box;
-	margin: 0;
+	margin: 0 auto;
 }
 
 body { 
@@ -9,49 +9,70 @@ body {
 	background-position: center;
 	background-image: 
     linear-gradient(
-      rgba(192, 192, 192, 0.2),
-      rgba(192, 192, 192, 0.2)
+      rgba(200, 200, 200, 0.4),
+      rgba(200, 200, 200, 0.4)
     ),
     url("http://thedcgazette.com//wp-content/uploads/2015/12/Variety-Vegetables.jpg");
+  color: #303030;
 }
 
 /*"Farmers Market Central" text*/
 h1 {
-    text-transform: uppercase;
-    font-weight: bold;
-    color: #FFF;
-    font-size: 60px;
-    background-color: rgba(0, 0, 0, 0.6);
-    line-height: 90px;
-    margin-bottom: 10px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 50px;
+    background-color: rgba(255, 255, 255, 0.8);
+    line-height: 80px;
+    margin-bottom: 30px;
     text-align: center;
-    padding: 15px;
-}
-
-/* Headings of other major panels/sections*/
-h2 {
-	padding: 1em;
-	text-align: center;
-	color: #FFF;
-	background-color: rgba(0, 0, 0, 0.6);
+    padding: 0.75em;
+    margin-top: -10px;
 }
 
 /* Table headings */
 th {
-	font-size: 1.5em;
-    border-bottom: 1px solid #ddd;
+	font-size: 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Table rows */
+td {
+  font-size: 14px;
+}
+
+.container {
+  width: 100%;
+}
+
+.for-search {
+  display: none;
+  margin: 0 auto;
+  width: 405px;
+}
+
+/* Row for the map and table results, background styling */
+.for-results {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 2em;
+  margin-bottom: 150px;
+}
+
+.nearby-heading {
+  font-size: 24px;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: 'Oswald', sans-serif;
+
 }
 
 /* Table background panel styling*/
-table {
-	background-color: white;
-	opacity: 0.8;
-	color: black;
+.panel-marketList {
+  border-radius: 0;
+  opacity: 0.9;
 }
 
-/* Spacing of search box */
-.search-input {
-	align-content: center;
+.table-marketList {
+  padding: 5px;
 }
 
 /* Spacing of input groups for adding market */
@@ -59,52 +80,74 @@ table {
 	margin-bottom: 5px;
 }
 
-.input-group-addon {
-	border-radius: 0;
-	border: none;
-	background-color: #fff;
-	opacity: 0.9;
+/* Div for buttons, finding/adding market */
+.intro-div {
+  color: #fff;
+  font-size: 35px;
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
 }
 
-/* Spacing of button */
-.btn-search {
-	margin-bottom: 10px;
+/* styling of search, login, and add buttons */
+.btn-addMarket, .btn-login, .btn-findMarket {
 	border: none;
 	border-radius: 0;
+}
+
+.btn-findMarket {
+  width: 200px;
+  font-style: italic;
+  padding: 0.75em 0;
+  font-size: 14px;
+  margin-bottom: 20px;
 }
 
 .btn-addMarket {
-	margin-bottom: 5px;
-	font-size: 1.5em;
-	padding: 0.75em;
-	width: 100%;
-	border-radius: 0;
+  width: 200px;
+  font-style: italic;
+  padding: 0.75em 0;
+  font-size: 14px;
+  margin-bottom: 20px;
 }
 
+.btns-div {
+  margin: 0 auto;
+  width: 405px;
+}
+
+.btn-login {
+  border-radius: 0;
+}
+
+.btn-search {
+  border-radius: 0;
+  margin-top: 7px;
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+/* Spacing of search box */
+.search-input {
+  height: 32px;
+  width: 200px;
+  border-radius: 0;
+}
+
+/* Spacing of entire search form */
+.search-form {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  width: 50%;
+}
+
+/* Styling of "i" buttons on table */
 .btn-moreInfo {
 	background-color: #fff;
 	border-radius: 0;
-	margin-right: 20px;
+	margin-right: 10px;
+  margin-top: 4px;
 }
-
-/* width of container for images along bottom */
-.container {
-	width: 100%;
-}
-
-/* Spacing of search form */
-.form-group {
-	margin-top: 10px;
-}
-
-.form-control {
-	background-color: white;
-	opacity: 0.8;
-	color: black;
-	border: none;
-	border-radius: 0;
-}
-
 
 /* Display map */
 #map {
@@ -114,74 +157,101 @@ table {
     margin-bottom: 20px;
 }
 
-#modal-footer{
-  padding: 17px 0px 0px 0px;
-  margin: 0;
-}
 
-.panel-default{
-  padding: 0;
-  margin: 0;
-}
+/* Media Queries */
 
 @media screen and (max-width: 768px) {
-  /* The body's bg color will be #333 */
+
   .container {
     width: 100%;
     max-width: 768px;
     margin: 0 auto;
-    clear: both;
   }
-
-  #map {
-  	height:300px;
-  }
-
-  #zip-code{
-  	max-width: 200px;
-  }
-
 
   h1{
-    font-size:20px;
+    font-size:24px;
   }
      
-  h2 {
-    font-size: 16px;
-  }
-      
   th {
     font-size: 14px;
   }
 
-  .btn-addMarket {
-    font-size: 14px;
-    padding: 0.5em;
+  td {
+    font-size: 12px;
   }
 
-  /* The wrapper's width will be 600px */
-  .wrapper {
-    width: 100%;
-    width: 600px;
-    }
+  .btn-moreInfo {
+    margin: 0 auto;
+  }
+
+  .intro-div {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 24px;
+  }
+
+  .btn-findMarket, .btn-addMarket {
+    width: 200px;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .btn-addMarket {
+    margin-bottom: 20px;
+  }
+
+  .nearby-heading {
+   font-size: 20px;
+  }
+
+  #map {
+    height:300px;
+  }
+
 }
 
 @media screen and (max-width: 667px) {
-  #map {
-  	height:200px;
+
+  .panel-marketList {
+    padding-left: 0;
+    margin-left: -20px;
+    margin-right: -20px;
   }
 
-  #zip-code{
-  	max-width: 200px;
+  .panel-body {
+    padding: 0;
+  }
+
+  .col-market {
+    padding: 0;
+  }
+
+  .btn-moreInfo {
+    margin: 0 auto;
+  }
+
+  .btn-findMarket, .btn-addMarket {
+    width: 200px;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 5px;
   }
 
   .btn-addMarket {
-    font-size: 14px;
-    padding: 0.5em;
+    margin-bottom: 20px;
   }
 
-  .wrapper {
-    width: 100%;
-    width: 600px;
-    }
+  .intro-div {
+    display: none;
+  }
+
+  .nearby-heading {
+   font-size: 18px;
+  }
+
+  #map {
+    height:200px;
+  }
+
 }
