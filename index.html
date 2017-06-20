@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en-US"> 
 
 <head>
   <meta charset="utf-8">
@@ -11,6 +11,7 @@
   <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Oswald:400,500" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
@@ -20,78 +21,70 @@
   <div class="container-fluid">
     <header>
       <div class="row">
-        <div class="col-md-12">
           <h1 class="title">Farmers Market Central</h1>
-        </div>
       </div>
     </header>
 
-    <!--Row comprised of everything but the images along bottom-->
-    <div class="row">
-
-      <!--Column for left-side elements: search and map-->
-    	<div class="col-md-5">
-	        <!--Fluid container to fill entire width-->
-	        <div class="container-fluid">
-	            <!--Row for search box-->
-	            <div class="row" id="searchable">
-		            <div class="panel-body">
-		            	<h2 id="search-add">Find Nearby Markets</h2>
-		            	<form class="form-inline" class="search-input">
-		                	<div class="form-group">
-		                		<!--zip code search box-->
-		                		<input type="number" class="form-control search-input" id="zip-code" placeholder="Enter Zip Code">
-
-		                		<!-- search button -->
-		                		<button type="button" class="btn btn-default" id="button-search" data-toggle="button" aria-pressed="false" autocomplete="off">Search</button>
-
-		                		<!--login-->
-		                		<button type="button" class="btn btn-default" id="button-login" data-toggle='modal' data-target='#modal--login'>Login</button>
-		                	</div>
-		                </form>
-		            </div>
-	        	</div>
-	        	<!--Row for Map-->
-				<div class="row" id="map"></div>
-				<button class='btn btn-default btn-addMarket' role='button' data-toggle='modal' data-target='#modal--market-add'>Add Your Market</button>
-	        </div>
-    	</div>
-    	<!--End of left-side column-->
-
-    	<!--Column for right-side elements: list of markets-->
-    	<div class="col-md-7">
-      		<!--Row for list of markets-->
-        	<div class="row" id="consearch">
-          		<!--Panel to hold table (keeps styling consistent)-->
-          		<div class="panel-body">
-            		<h2>Markets in Your Area</h2>
-            		<table class="table table-hover">
-		              <thead>
-		                <tr>
-		                  <th>Market</th>
-		                  <th>Location</th>
-		                  <th>Dates & Times</th>
-		                  <th></th>
-		                </tr>
-		              </thead>
-		              <tbody>
-		                <tr>
-		                  <td>VEGFRESH Market</td>
-		                  <td>Medina, Ohio</td>
-		                  <td>7/4/2017 from 8am-5pm</td>
-		                  <td></td>
-		                </tr>
-		              </tbody>
-            		</table>
-          		</div>
-        	</div>
-      	</div>
-      <!--End of right-side column-->
+    <div class="row for-buttons">
+      <div class="col-md-12">
+        <div class="row for-buttons">
+          <div class="intro-div">I want to: </div></br>
+          <div class="btns-div">
+            <button type="button" class='btn btn-default btn-findMarket' role='button'>Find A Market</button>
+            <button type="button" class='btn btn-default btn-addMarket' role='button' data-toggle='modal' data-target='#modal--market-add'>Add A Market</button>
+          </div>
+          <!-- <button type="button" class="btn btn-default btn-login" id="button-login" data-toggle='modal' data-target='#modal--login'>Login</button> -->
+        </div>
+        <div class="row for-search">
+          <form class="form">
+            <div class="form-group search-form">
+              <input type="number" class="form-control search-input" id="zip-code" placeholder="Enter Zip Code">
+              <button type="button" class="btn btn-default btn-search" id="button-search">Search</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-    <!--End of main row-->
+
+    <div class="row for-results">
+        <div class="nearby-heading">Explore Nearby Markets</div>
+      <div class="container">
+        <div class="col-md-6">
+          <div class="row" id="map"></div>
+        </div>
+        <div class="col-md-6 col-market">
+          <div class="panel panel-default panel-marketList">
+            <div class="panel-body">
+              <table class="table table-hover table-marketList">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Market</th>
+                    <th>Location</th>
+                    <th>Dates & Times</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 
 
-	<!--Modal for login feature-->
+
+
+  <!--Modal for login feature-->
     <div class="modal fade" id="modal--login" tabindex="-1" role="dialog" aria-labelledby="modal--login">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -124,7 +117,7 @@
     <!-- Modal for adding a market-->
     <div class="modal fade" id="modal--market-add" tabindex="-1" role="dialog" aria-labelledby="modal--market-add">
       <div class="modal-dialog" role="document">
-        <div class="modal-content">"
+        <div class="modal-content">
           <div class="modal-body">
             <div class="panel panel-default">
               <div class="panel-heading">
@@ -174,7 +167,7 @@
     <!-- End Modal -->
 
 
-	<!--Modal for more information-->
+  <!--Modal for more information-->
     <div class="modal fade" id="modal--moreInfo" tabindex="-1" role="dialog" aria-labelledby="modal--moreInfo">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -196,14 +189,14 @@
                               populated list of Addresses
                             </div>
                         </div>
-                      	<div class="row">
-        					          <div class="col-md-12">
-                  					  <strong style="text-decoration: underline;">Products</strong>
-                  				  </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                              <strong style="text-decoration: underline;">Products</strong>
+                            </div>
                         </div>
                         <div class="row">
-                  				  <div class="col-md-12" id="moreInfo-products">
-                  					  populated list of products
+                            <div class="col-md-12" id="moreInfo-products">
+                              populated list of products
                             </div>
                         </div>
                         <div class="row">
@@ -221,9 +214,9 @@
                           <button type="button" class="btn btn-default btn-modal" data-dismiss="modal">Close</button>
                         </div>
                         </div>
-    					    </div>
-				        </div>
-				      </div>
+                  </div>
+                </div>
+              </div>
           </div>
         </div>
       </div>
