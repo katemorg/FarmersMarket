@@ -93,12 +93,12 @@ function getDetails(market, index) {
 
       // Add to table
       var newRow = ' \
-          <tr data-name="' + name + '" data-address="' + currentMarket['Address'] + '" data-schedule="' + currentMarket['Schedule'] + '" data-products="' + currentMarket['Products'] + '" data-contact="' + currentMarket['Contact'] + '"> \
-            <td>' + name + '</td> \
-            <td>' + '<a href="' + currentMarket["GoogleLink"] + '">' + currentMarket["Address"] + '</a></td> \
-            <td>' + currentMarket["Schedule"] + '</td> \
-            <td>' + '<button type="button" class="btn btn-default btn-moreInfo" role="button" data-toggle="modal" data-target="#modal--moreInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>' + '</td> \
-          </tr>';
+    <tr data-name="' + name + '" data-address="' + currentMarket['Address'] + '" data-schedule="' + currentMarket['Schedule'] + '" data-products="' + currentMarket['Products'] + '" data-contact="' + currentMarket['Contact'] + '"> \
+      <td>' + '<button type="button" class="btn btn-default btn-moreInfo" role="button" data-toggle="modal" data-target="#modal--moreInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>' + '</td> \
+      <td>' + name + '</td> \
+      <td>' + '<a href="' + currentMarket["GoogleLink"] + '">' + currentMarket["Address"] + '</a></td> \
+      <td>' + currentMarket["Schedule"] + '</td> \
+    </tr>';
       $(".table tbody").append(newRow);
 
 
@@ -229,7 +229,7 @@ $(".table").on("click", ".btn-moreInfo", function() {
 
 // Deletes all markers in the array by removing references to them.
 function deleteMarkers() {
-  for (var i = 0; i < markers.length; i++ ) {
+  for (var i = 0; i < markers.length; i++) {
     markers[i].setMap(null);
   }
   markers.length = 0;
