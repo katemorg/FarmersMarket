@@ -21,9 +21,9 @@ var config = {
 firebase.initializeApp(config);
 
 var database = firebase.database();
-var markets = [];
-var latlong = [];
-var markers = [];
+var markets = [];     // Holds all of the markets retrieved from the API call
+var latlong = [];     // Holds all the lat/long coordinates of the markets (used to zoom google maps)
+var markers = [];     // Holds all the markers placed on googlemap
 var map = null;
 
 function farmersMarket() {
@@ -35,6 +35,11 @@ function farmersMarket() {
   this.schedule = null;
 }
 
+/**
+ * Check if geolocation is available, if so ask user to use their location
+ * If user approves get coordinates, reverse geocode the coordinates, and input into the zipcode text box
+ * Currently calls the onlick event for button-search to then call the function to get markets
+ */
 $(function() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(success, error);
@@ -84,33 +89,24 @@ function initMap() {
   });
 }
 
+/**
+ * Searches the USDA database using the zipcode the user input
+ * Empties the markets[],, calls fucntion to remove all of the markers from the map
+ * Calls fucntion to send and process request to USDA database
+ */
 $("#button-search").on("click", function() {
+  event.preventDefault();
   var zipcode = $("#zip-code").val().trim();
   markets = [];
   deleteMarkers();
-  codeAddress(zipcode);
   $(".table tbody").empty();
   getMarkets(zipcode);
 });
 
-//Call this wherever needed to actually handle the display
-function codeAddress(zipCode) {
-  var geocoder = new google.maps.Geocoder();
-  geocoder.geocode({ 'address': zipCode }, function(results, status) {
-    if (status == google.maps.GeocoderStatus.OK) {
-      //Got result, center the map and put it out there
-      map.setCenter(results[0].geometry.location);
-      map.zoom = 10;
-    } else {
-      alert("Geocode was not successful for the following reason: " + status);
-    }
-  });
-}
-
-/****************************************************************
+/**
  * Calls USDA api to get a list of farmers markets in a zipcode
  * Request is in JSONP
- **************************************************************/
+ */
 function getMarkets(zip) {
   $.ajax({
     type: "GET",
@@ -201,18 +197,17 @@ function getDetails(market, index) {
   });
 }
 
-function displayMarkets(detailresults) {
-  var currentMarket = detailresults.marketdetails;
-  var newRow = ' \
-    <tr> \
-      <td>' + name + '</td> \
-      <td>' + '<a href="' + currentMarket["GoogleLink"] + '">' + currentMarket["Address"] + '</a></td> \
-      <td>' + currentMarket["Schedule"] + '</td> \
-      <td>' + '<button type="button" class="btn btn-default btn-moreInfo" role="button" data-toggle="modal" data-target="#modal--moreInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>' + '</td> \
-    </tr>';
-  $(".table tbody").append(newRow);
-
-}
+// function displayMarkets(detailresults) {
+//   var currentMarket = detailresults.marketdetails;
+//   var newRow = ' \
+//     <tr> \
+//       <td>' + name + '</td> \
+//       <td>' + '<a href="' + currentMarket["GoogleLink"] + '">' + currentMarket["Address"] + '</a></td> \
+//       <td>' + currentMarket["Schedule"] + '</td> \
+//       <td>' + '<button type="button" class="btn btn-default btn-moreInfo" role="button" data-toggle="modal" data-target="#modal--moreInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>' + '</td> \
+//     </tr>';
+//   $(".table tbody").append(newRow);
+// }
 
 // Populate the table with the list farmers markets
 database.ref().on("value", function(snapshot) {
@@ -231,6 +226,7 @@ database.ref().on("value", function(snapshot) {
   }
 );
 
+// Helps jQuery Validator work with the Bootstrap CSS
 $.validator.setDefaults({
   highlight: function(element) {
     $(element).closest('.input-group').addClass('has-error');
@@ -277,7 +273,8 @@ $("#form--market-add").validate({
 });
 
 /**
- * Checks if a market is valid if it is that market is then added to the database
+ * Checks if a market is valid 
+ * If valid adds the market to the database otherwise alert user of invalid fields
  */
 $("#btn-AddMarket").on("click", function() {
   event.preventDefault();
@@ -327,7 +324,10 @@ $(".table").on("click", ".btn-moreInfo", function() {
   /*$("#moreInfo-contact").html(contact);*/
 });
 
-// Deletes all markers in the array by removing references to them.
+/**
+ * Deletes all markers in the array by removing references to them.
+ * Removes them from the map also
+ */
 function deleteMarkers() {
   for (var i = 0; i < markers.length; i++) {
     markers[i].setMap(null);
