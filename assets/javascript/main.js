@@ -1,11 +1,22 @@
-// Initialize Firebase
+// // Initialize Firebase
+// var config = {
+//   apiKey: "AIzaSyCMqAsnjjRovdQtvPkQrpMV1T8hMcPfrZo",
+//   authDomain: "farmers-market-1497106306900.firebaseapp.com",
+//   databaseURL: "https://farmers-market-1497106306900.firebaseio.com",
+//   projectId: "farmers-market-1497106306900",
+//   storageBucket: "farmers-market-1497106306900.appspot.com",
+//   messagingSenderId: "453822887828"
+// };
+// firebase.initializeApp(config);
+
+// MY FIRE Firebase
 var config = {
-  apiKey: "AIzaSyCMqAsnjjRovdQtvPkQrpMV1T8hMcPfrZo",
-  authDomain: "farmers-market-1497106306900.firebaseapp.com",
-  databaseURL: "https://farmers-market-1497106306900.firebaseio.com",
-  projectId: "farmers-market-1497106306900",
-  storageBucket: "farmers-market-1497106306900.appspot.com",
-  messagingSenderId: "453822887828"
+  apiKey: "AIzaSyB_56Il0271ry-cycR66ma3mOcLoMLX8M4",
+  authDomain: "farmersmarket-c927a.firebaseapp.com",
+  databaseURL: "https://farmersmarket-c927a.firebaseio.com",
+  projectId: "farmersmarket-c927a",
+  storageBucket: "farmersmarket-c927a.appspot.com",
+  messagingSenderId: "765507152646"
 };
 firebase.initializeApp(config);
 
@@ -166,8 +177,8 @@ function getDetails(market, index) {
         map: map,
         title: name,
         html: '<div class="markerPop">' +
-          '<h1>' + name.substring(4) + '</h1>' +
-          '<h3>' + currentMarket['Address'] + '</h3>' +
+          '<h3>' + name + '</h3>' +
+          '<h5>' + currentMarket['Address'] + '</h5>' +
           '<p>' + currentMarket['Products'].split(';') + '</p>' +
           '<p>' + currentMarket['Schedule'] + '</p>' +
           '</div>'
@@ -203,37 +214,61 @@ function displayMarkets(detailresults) {
 
 }
 
-// // Populate the table with the list farmers markets
-// database.ref().on("value", function(snapshot) {
-//     var data = snapshot.val();
-//     $(".table tbody").empty();
-//     if (data) {
-//       for (var key in data) {
-//         var thisObject = data[key];
-//       }
-//     } else {
-//       $(".table tbody").append("No farmers markets add one.");
-//     }
-//   },
-//   function(errorObject) {
-//     console.log("The read failed: " + errorObject.code);
-//     $(".table tbody").append("Error getting farmers markets schedule!");
-//   }
-// );
+// Populate the table with the list farmers markets
+database.ref().on("value", function(snapshot) {
+    var data = snapshot.val();
+    if (data) {
+      for (var key in data) {
+        var thisObject = data[key];
+      }
+    } else {
+      $(".table tbody").append("No farmers markets add one.");
+    }
+  },
+  function(errorObject) {
+    console.log("The read failed: " + errorObject.code);
+    $(".table tbody").append("Error getting farmers markets schedule!");
+  }
+);
+
+$.validator.setDefaults({
+  highlight: function(element) {
+    $(element).closest('.input-group').addClass('has-error');
+  },
+  unhighlight: function(element) {
+    $(element).closest('.input-group').removeClass('has-error');
+  },
+  errorElement: 'span',
+  errorClass: 'help-block',
+  errorPlacement: function(error, element) {
+    if (element.parent('.input-group').length) {
+      error.insertAfter(element.parent());
+    } else {
+      error.insertAfter(element);
+    }
+  }
+});
 
 // Function to validate user input on form before submitting
 $("#form--market-add").validate({
   rules: {
     marketNameAdd: "required",
     marketAddressAdd: "required",
-    marketStateAdd: "required",
-    marketCityAdd: "required",
-    marketZipAdd: "required",
-    marketProductsAdd: {
+    marketStateAdd: {
       required: true,
+      stateUS: true
     },
+    marketCityAdd: "required",
+    marketZipAdd: {
+      required: true,
+      zipcodeUS: true
+    },
+    // marketProductsAdd: {
+    //   required: true,
+    // },
     marketContactAdd: {
       required: true,
+      phoneUS: true
     }
   },
   submitHandler: function(form, event) {
@@ -241,23 +276,36 @@ $("#form--market-add").validate({
   }
 });
 
-
-
-// function addMarket() {
-//   database.ref().push({
-//     id: market.id,
-//     name: market.name,
-//     address: market.address,
-//     googleLink: market.googleLink,
-//     products: market.products,
-//     schedule: market.schedule,
-//   });
-// }
-
-
+/**
+ * Checks if a market is valid if it is that market is then added to the database
+ */
 $("#btn-AddMarket").on("click", function() {
   event.preventDefault();
-  $("#form--market-add").valid()
+  if ($("#form--market-add").valid()) {
+    var marketname = $('#marketNameAdd').val().trim();
+    var address = $('#marketAddressAdd').val().trim();
+    var city = $('#marketCityAdd').val().trim();
+    var state = $('#marketStateAdd').val().trim();
+    var zipcode = $('#marketZipAdd').val().trim();
+    var products = $('#marketProductsAdd').val();
+
+    database.ref().push().set({
+      name: marketname,
+      address: address,
+      city: city,
+      state: state,
+      zipcode: zipcode,
+      products: products,
+      timeAdded: firebase.database.ServerValue.TIMESTAMP
+    }, function(error) {
+      if (error) {
+        console.log(error);
+      } else {
+        $("#form--market-add input").val("");
+        $('#modal--market-add').modal('toggle');
+      }
+    });
+  }
 });
 
 /**
