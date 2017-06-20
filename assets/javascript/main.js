@@ -27,6 +27,7 @@ $(function() {
     markets = [];
     $(".table tbody").empty();
     getMarkets(zipcode);
+    $("#zip-code").val("");
   });
 });
 
@@ -65,10 +66,10 @@ function getDetails(market, index) {
     var currentMarket = data.marketdetails;
     var newRow = ' \
     <tr data-name="' + name + '" data-address="' + currentMarket['Address'] + '" data-schedule="' + currentMarket['Schedule'] + '" data-products="' + currentMarket['Products'] + '" data-contact="' + currentMarket['Contact'] + '"> \
+      <td>' + '<button type="button" class="btn btn-default btn-moreInfo" role="button" data-toggle="modal" data-target="#modal--moreInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>' + '</td> \
       <td>' + name + '</td> \
       <td>' + '<a href="' + currentMarket["GoogleLink"] + '">' + currentMarket["Address"] + '</a></td> \
       <td>' + currentMarket["Schedule"] + '</td> \
-      <td>' + '<button type="button" class="btn btn-default btn-moreInfo" role="button" data-toggle="modal" data-target="#modal--moreInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>' + '</td> \
     </tr>';
     $(".table tbody").append(newRow);
   }
@@ -86,10 +87,10 @@ function displayMarkets(detailresults) {
   var currentMarket = detailresults.marketdetails;
   var newRow = ' \
     <tr> \
+      <td>' + '<button type="button" class="btn btn-default btn-moreInfo" role="button" data-toggle="modal" data-target="#modal--moreInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>' + '</td> \
       <td>' + name + '</td> \
       <td>' + '<a href="' + currentMarket["GoogleLink"] + '">' + currentMarket["Address"] + '</a></td> \
       <td>' + currentMarket["Schedule"] + '</td> \
-      <td>' + '<button type="button" class="btn btn-default btn-moreInfo" role="button" data-toggle="modal" data-target="#modal--moreInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>' + '</td> \
     </tr>';
   $(".table tbody").append(newRow);
 }
@@ -179,4 +180,9 @@ $(".table").on("click", ".btn-moreInfo", function() {
   $("#moreInfo-address").html(address);
   $("#moreInfo-schedule").html(schedule);
   /*$("#moreInfo-contact").html(contact);*/
+});
+
+
+$(".btn-findMarket").on("click", function() {
+  $(".for-search").toggle();
 });
