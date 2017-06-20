@@ -21,9 +21,9 @@ var config = {
 firebase.initializeApp(config);
 
 var database = firebase.database();
-var markets = [];     // Holds all of the markets retrieved from the API call
-var latlong = [];     // Holds all the lat/long coordinates of the markets (used to zoom google maps)
-var markers = [];     // Holds all the markers placed on googlemap
+var markets = []; // Holds all of the markets retrieved from the API call
+var latlong = []; // Holds all the lat/long coordinates of the markets (used to zoom google maps)
+var markers = []; // Holds all the markers placed on googlemap
 var map = null;
 
 function farmersMarket() {
@@ -150,12 +150,12 @@ function getDetails(market, index) {
 
       // Add to table
       var newRow = ' \
-    <tr data-name="' + name + '" data-address="' + currentMarket['Address'] + '" data-schedule="' + currentMarket['Schedule'] + '" data-products="' + currentMarket['Products'] + '" data-contact="' + currentMarket['Contact'] + '"> \
-      <td>' + '<button type="button" class="btn btn-default btn-moreInfo" role="button" data-toggle="modal" data-target="#modal--moreInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>' + '</td> \
-      <td>' + name + '</td> \
-      <td>' + '<a href="' + currentMarket["GoogleLink"] + '">' + currentMarket["Address"] + '</a></td> \
-      <td>' + currentMarket["Schedule"] + '</td> \
-    </tr>';
+        <tr data-name="' + name + '" data-address="' + currentMarket['Address'] + '" data-schedule="' + currentMarket['Schedule'] + '" data-products="' + currentMarket['Products'] + '" data-contact="' + currentMarket['Contact'] + '"> \
+          <td>' + '<button type="button" class="btn btn-default btn-moreInfo" data-toggle="modal" data-target="#modal--moreInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>' + '</td> \
+          <td>' + name + '</td> \
+          <td>' + '<a href="' + currentMarket["GoogleLink"] + '">' + currentMarket["Address"] + '</a></td> \
+          <td>' + currentMarket["Schedule"] + '</td> \
+        </tr>';
       $(".table tbody").append(newRow);
 
 
@@ -198,33 +198,43 @@ function getDetails(market, index) {
 }
 
 // function displayMarkets(detailresults) {
-//   var currentMarket = detailresults.marketdetails;
-//   var newRow = ' \
-//     <tr> \
-//       <td>' + name + '</td> \
-//       <td>' + '<a href="' + currentMarket["GoogleLink"] + '">' + currentMarket["Address"] + '</a></td> \
-//       <td>' + currentMarket["Schedule"] + '</td> \
-//       <td>' + '<button type="button" class="btn btn-default btn-moreInfo" role="button" data-toggle="modal" data-target="#modal--moreInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>' + '</td> \
-//     </tr>';
-//   $(".table tbody").append(newRow);
+// var currentMarket = detailresults.marketdetails;
+// var newRow = ' \
+//   <tr> \
+//     <td>' + name + '</td> \
+//     <td>' + '<a href="' + currentMarket["GoogleLink"] + '">' + currentMarket["Address"] + '</a></td> \
+//     <td>' + currentMarket["Schedule"] + '</td> \
+//     <td>' + '<button type="button" class="btn btn-default btn-moreInfo" role="button" data-toggle="modal" data-target="#modal--moreInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>' + '</td> \
+//   </tr>';
+// $(".table tbody").append(newRow);
 // }
 
 // Populate the table with the list farmers markets
-database.ref().on("value", function(snapshot) {
-    var data = snapshot.val();
-    if (data) {
-      for (var key in data) {
-        var thisObject = data[key];
-      }
-    } else {
-      $(".table tbody").append("No farmers markets add one.");
-    }
-  },
-  function(errorObject) {
-    console.log("The read failed: " + errorObject.code);
-    $(".table tbody").append("Error getting farmers markets schedule!");
-  }
-);
+// database.ref().on("value", function(snapshot) {
+//     var data = snapshot.val();
+//     if (data) {
+//       for (var key in data) {
+//         var market = data[key];
+//         var address = market.address + " " + market.city + " " + market.state + " " + market.zipcode;
+//         // alert(address);
+//         var newRow = ' \
+//         <tr data-name="' + market.name + '" data-address="' + address + '" data-schedule="' + " " + '" data-products="' + market.products + '" data-contact="' + market.contact + '"> \
+//           <td>' + '<button type="button" class="btn btn-default btn-moreInfo" data-toggle="modal" data-target="#modal--moreInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>' + '</td> \
+//           <td>' + market.name + '</td> \
+//           <td>' + '<a href="' + "#" + '">' + address + '</a></td> \
+//           <td>' + "coming soon" + '</td> \
+//         </tr>';
+//         $(".table tbody").prepend(newRow);
+//       }
+//     } else {
+//       $(".table tbody").append("No farmers markets add one.");
+//     }
+//   },
+//   function(errorObject) {
+//     console.log("The read failed: " + errorObject.code);
+//     $(".table tbody").append("Error getting farmers markets schedule!");
+//   }
+// );
 
 // Helps jQuery Validator work with the Bootstrap CSS
 $.validator.setDefaults({
@@ -304,6 +314,12 @@ $("#btn-AddMarket").on("click", function() {
     });
   }
 });
+
+// function displayNewMarket(ref, cb) {
+//   ref.limit(1).once("child_added", function (snapshot) {
+//     cb(snapshot.val());
+//   });
+// }
 
 /**
  * Displays the info about a specific market in a popup modal
